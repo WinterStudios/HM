@@ -18,9 +18,9 @@ namespace HM.Launcher
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Launcher : Window
     {
-        public MainWindow()
+        public Launcher()
         {
             InitializeComponent();
         }
