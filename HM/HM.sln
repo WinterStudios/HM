@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HM.Launcher", "HM.Launcher\HM.Launcher.csproj", "{2DBC4DE6-2D6E-4BB8-8AD9-34C82889CF06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HM.App", "HM.App\HM.App.csproj", "{FADEA794-F541-4E37-BB68-3032AEDDA8A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DBC4DE6-2D6E-4BB8-8AD9-34C82889CF06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DBC4DE6-2D6E-4BB8-8AD9-34C82889CF06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DBC4DE6-2D6E-4BB8-8AD9-34C82889CF06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DBC4DE6-2D6E-4BB8-8AD9-34C82889CF06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FADEA794-F541-4E37-BB68-3032AEDDA8A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FADEA794-F541-4E37-BB68-3032AEDDA8A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FADEA794-F541-4E37-BB68-3032AEDDA8A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FADEA794-F541-4E37-BB68-3032AEDDA8A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA60F4DD-86D2-4FDF-8FB5-F66824FFE990}
+	EndGlobalSection
+EndGlobal
