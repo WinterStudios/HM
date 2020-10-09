@@ -11,8 +11,8 @@ jobs:
 
     steps:
     - name: Generate
-    - id: bump
       uses: zwaldowski/match-label-action@v1
+      id: bump
       with:
         allowed: major,minor,patch
     - uses: zwaldowski/semver-release-action@v1
