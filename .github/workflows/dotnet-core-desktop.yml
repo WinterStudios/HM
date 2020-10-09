@@ -50,7 +50,7 @@ jobs:
       uses: cycjimmy/semantic-release-action@v2.5.0
       id: semantic
       env:
-        GITHUB_TOKEN: ${{ secrets.ACTIONBUILD }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Do something when a new release published
       if: steps.semantic.outputs.new_release_published == 'true'
