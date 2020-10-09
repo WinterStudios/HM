@@ -46,9 +46,7 @@ jobs:
       
     - name: Generate build number
       id: buildnumber
-      uses: einaregilsson/build-number@v2 
-      with:
-        token: ${{secrets.github_token}}
+      uses: PaulHatch/semantic-version@v3.1.2
     
     - name: Create Release
       id: create_release
