@@ -15,7 +15,7 @@ jobs:
       uses: fregante/daily-version-action@v1
       id: version
     - name: Print new build number
-      runs: echo 'Created!' ${{ steps.version.outputs.version }}
+      run: echo 'Created!' ${{ steps.version.outputs.version }}
       
   build:
 
