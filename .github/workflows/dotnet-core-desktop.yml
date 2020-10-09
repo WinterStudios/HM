@@ -50,7 +50,7 @@ jobs:
     - name: Set outputs
       id: vars
       shell: pwsh
-      run: echo "::set-output name=ver::("v{0}" -f (get-date -format yy\.MMdd\.HHmm))"
+      run: echo "::set-output name=ver::('v{0}' -f (get-date -format yy\.MMdd\.HHmm))"
     - name: Check outputs
       shell: pwsh
       run: echo ${{ steps.vars.outputs.ver }}
