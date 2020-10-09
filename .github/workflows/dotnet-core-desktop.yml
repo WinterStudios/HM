@@ -18,7 +18,7 @@ jobs:
         tag_prefix: v
       
     - name: Print new build number
-      run: echo 'Created!' ${{ steps.version }}
+      run: echo 'Created!' ${{ steps.version.major }}
       
   build:
 
