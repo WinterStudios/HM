@@ -50,10 +50,10 @@ jobs:
     - name: Set outputs
       id: vars
       shell: pwsh
-      run: echo "::set-output name=production::(get-date -format yy\.MMdd\.HHmm)"
+      run: echo "::set-output name=ver::("v{0}" -f (get-date -format yy\.MMdd\.HHmm))"
     - name: Check outputs
       shell: pwsh
-      run: echo ${{ steps.vars.outputs.production }}
+      run: echo ${{ steps.vars.outputs.ver }}
       
     - name: Create Release
       id: create_release
@@ -61,8 +61,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: (v. + ${{ steps.version.outputs.ver }})
-        release_name: v. + ${{ steps.version }}
+        tag_name: (v. + ${{ steps.vars.outputs.ver }})
+        release_name: v. + ${{ steps.vars.outputs.ver }}
         draft: false
         prerelease: false
       
