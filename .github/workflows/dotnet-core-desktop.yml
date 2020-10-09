@@ -45,13 +45,13 @@ jobs:
       run: Compress-Archive -path D:\a\HM\HM\HM\HM.App\bin\Debug\netcoreapp3.1\ -DestinationPath D:\a\HM\HM\HM\HM.App\bin\Debug\netcoreapp3.1\Release.zip
       
     - name: Action For Semantic Release
-      # You may pin to the exact commit or the version.
-      # uses: cycjimmy/semantic-release-action@3e9fa3795de8583ded443348a3a71abf97482b48
-      uses: cycjimmy/semantic-release-action@v2.5.0
+      uses: codfish/semantic-release-action@master
       id: semantic
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
+    - run: echo ${{ steps.semantic.outputs.release-version }}
+      
+      
     - name: Do something when a new release published
       if: steps.semantic.outputs.new_release_published == 'true'
       run: |
