@@ -42,7 +42,7 @@ jobs:
       run: dotnet build $env:Test_Project_Path
     
     - name: Zip Build Release
-      run: Compress-Archive
+      run: Compress-Archive -path D:\a\HM\HM\HM\HM.App\bin\Debug\netcoreapp3.1\ -DestinationPath D:\a\HM\HM\HM\HM.App\bin\Debug\netcoreapp3.1\
       
     
     - name: Create a Release
