@@ -59,6 +59,7 @@ jobs:
         release_name: ${{ steps.daily-version.outputs.version }}
         draft: false
         prerelease: false
+      
     - name: Upload Release Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
