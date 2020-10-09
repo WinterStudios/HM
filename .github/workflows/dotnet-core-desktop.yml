@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Action For Semantic Release
-        uses: codfish/semantic-release-action@master
+        uses: codfish/semantic-release-action@v1
         id: semantic
         with:
           branch: main
