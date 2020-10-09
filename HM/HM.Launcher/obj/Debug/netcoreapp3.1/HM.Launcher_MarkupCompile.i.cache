@@ -1,20 +1,20 @@
 ﻿HM.Launcher
-20.10.7.2002
+20.10.9.1211
 
-winexe
+exe
 C#
 .cs
-C:\Users\hugo_\Source\Repos\WinterStudios\HM\HM\HM.Launcher\obj\Debug\netcoreapp3.1\
+C:\Users\X510\source\repos\WinterStudios\HM.App\HM\HM.Launcher\obj\Debug\netcoreapp3.1\
 HM.Launcher
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\hugo_\Source\Repos\WinterStudios\HM\HM\HM.Launcher\App.xaml
+
 11539206797
 
-6792320264
+5-1204068015
 1921654412462
 Launcher.xaml;
 
-False
+True
 

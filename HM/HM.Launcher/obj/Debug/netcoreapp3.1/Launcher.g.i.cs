@@ -53,7 +53,7 @@ namespace HM.Launcher {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/HM.Launcher;V20.10.7.2002;component/launcher.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/HM.Launcher;V20.10.9.1211;component/launcher.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Launcher.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

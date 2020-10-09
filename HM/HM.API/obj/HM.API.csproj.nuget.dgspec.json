@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hugo_\\Source\\Repos\\WinterStudios\\HM\\HM\\HM.API\\HM.API.csproj": {}
+    "C:\\Users\\X510\\source\\repos\\WinterStudios\\HM.App\\HM\\HM.API\\HM.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hugo_\\Source\\Repos\\WinterStudios\\HM\\HM\\HM.API\\HM.API.csproj": {
+    "C:\\Users\\X510\\source\\repos\\WinterStudios\\HM.App\\HM\\HM.API\\HM.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hugo_\\Source\\Repos\\WinterStudios\\HM\\HM\\HM.API\\HM.API.csproj",
+        "projectUniqueName": "C:\\Users\\X510\\source\\repos\\WinterStudios\\HM.App\\HM\\HM.API\\HM.API.csproj",
         "projectName": "HM.API",
-        "projectPath": "C:\\Users\\hugo_\\Source\\Repos\\WinterStudios\\HM\\HM\\HM.API\\HM.API.csproj",
-        "packagesPath": "C:\\Users\\hugo_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hugo_\\Source\\Repos\\WinterStudios\\HM\\HM\\HM.API\\obj\\",
+        "projectPath": "C:\\Users\\X510\\source\\repos\\WinterStudios\\HM.App\\HM\\HM.API\\HM.API.csproj",
+        "packagesPath": "C:\\Users\\X510\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\X510\\source\\repos\\WinterStudios\\HM.App\\HM\\HM.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hugo_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\X510\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

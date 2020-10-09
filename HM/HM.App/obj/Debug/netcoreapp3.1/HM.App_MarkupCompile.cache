@@ -1,20 +1,20 @@
 ﻿HM.App
-20.10.7.2002
+20.10.9.1200
 
 winexe
 C#
 .cs
-C:\Users\hugo_\Source\Repos\WinterStudios\HM\HM\HM.App\obj\Debug\netcoreapp3.1\
+C:\Users\X510\source\repos\WinterStudios\HM.App\HM\HM.App\obj\Debug\netcoreapp3.1\
 HM.App
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\hugo_\Source\Repos\WinterStudios\HM\HM\HM.App\App.xaml
+C:\Users\X510\source\repos\WinterStudios\HM.App\HM\HM.App\App.xaml
 11151548125
 
 3-917710711
 1921654412462
 MainWindow.xaml;
 
-True
+False
 
