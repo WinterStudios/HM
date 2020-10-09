@@ -13,6 +13,8 @@ jobs:
       - name: Action For Semantic Release
         uses: codfish/semantic-release-action@master
         id: semantic
+        with:
+          branch: main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: echo ${{ steps.semantic.outputs.release-version }}
