@@ -43,11 +43,9 @@ jobs:
     - name: Zip Build Release
       run: Compress-Archive -path D:\a\HM\HM\HM\HM.App\bin\Debug\netcoreapp3.1\ -DestinationPath D:\a\HM\HM\HM\HM.App\bin\Debug\netcoreapp3.1\Release.zip
       
-    - uses: fregante/daily-version-action@v1
-      name: Create tag if necessary
-      id: daily-version
-      with:
-        prefix: v
+    - name: Create tag if necessary
+      id: version
+      run: get-date -format yy\.MMdd\.HHmm
         
     - name: Create Release
       id: create_release
@@ -55,8 +53,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ steps.daily-version.outputs.version }}
-        release_name: ${{ steps.daily-version.outputs.version }}
+        tag_name: v. + ${{ steps.version }}
+        release_name: v. + ${{ steps.version }}
         draft: false
         prerelease: false
       
