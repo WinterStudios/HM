@@ -10,17 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - id: bump
-      uses: zwaldowski/match-label-action@v1
+    - name: Generate
+      uses: PaulHatch/semantic-version@v3.1.2
+      id: version
       with:
-        allowed: major,minor,patch
-    - uses: zwaldowski/semver-release-action@v1
-      with:
-        bump: ${{ steps.bump.outputs.match }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main
+        tag_prefix: v
       
     - name: Print new build number
-      run: echo 'Created!' ${{ steps.version.outputs.version }}
+      run: echo 'Created!' ${{ steps.version }}
       
   build:
 
