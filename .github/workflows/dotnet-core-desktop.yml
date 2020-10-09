@@ -18,7 +18,7 @@ jobs:
     env:
       Solution_Name: HM\HM.sln                    # Replace with your solution name, i.e. MyWpfApp.sln.
       Test_Project_Path: HM/HM.App/HM.App.csproj               # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-      
+  
 
     steps:
     - name: Checkout
@@ -47,6 +47,14 @@ jobs:
       id: version
       run: echo "::set-output name=ver::(get-date -format yy\.MMdd\.HHmm)"
         
+    - name: Set outputs
+      id: vars
+      shell: pwsh
+      run: echo "::set-output name=production::(get-date -format yy\.MMdd\.HHmm)"
+    - name: Check outputs
+      shell: pwsh
+      run: echo ${{ steps.vars.outputs.production }}
+      
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
