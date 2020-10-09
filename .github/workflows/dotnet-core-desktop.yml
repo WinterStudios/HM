@@ -8,12 +8,14 @@ on:
 jobs:
   job_GenerateVersionKey:
     runs-on: ubuntu-latest
-    outputs:
-      build_number: ${{ steps.buildnumber.outputs.build_number }}
+
     steps:
-    - name: Create tag if necessary
-      uses: fregante/daily-version-action@v1
+    - name: Daily Version
+      # You may pin to the exact commit or the version.
+      # uses: fregante/daily-version-action@1c5cc54c5d37a10e4b3dde7f8d3fb09275a48746
+      uses: fregante/daily-version-action@v1.2.1
       id: version
+      
     - name: Print new build number
       run: echo 'Created!' ${{ steps.version.outputs.version }}
       
