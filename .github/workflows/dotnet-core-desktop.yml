@@ -42,7 +42,7 @@ jobs:
       run: dotnet build $env:Test_Project_Path
     
     - name: Zip Build Release
-      uses: TheDoctor0/zip-release@0.4.1
+      run: Compress-Archive
       
     
     - name: Create a Release
