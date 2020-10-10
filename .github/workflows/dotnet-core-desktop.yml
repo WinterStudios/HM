@@ -45,12 +45,12 @@ jobs:
       
     - name: Create tag if necessary
       id: version
-      run: echo "::set-output name=ver::(get-date -format yy\.MMdd\.HHmm)"
+      run: echo "::set-output name=ver::$('v0.{0}-rc' -f (get-date -format yy\.MMdd))"
         
     - name: Set outputs
       id: vars
       shell: pwsh
-      run: echo "::set-env name=ver::$('v{0}' -f (get-date -format yy\.MMdd\.HHmm))"
+      run: echo "::set-env name=ver::$('v0.{0}-rc' -f (get-date -format yy\.MMdd))"
     - name: Check outputs
       shell: pwsh
       run: echo ${{ env.ver }}
