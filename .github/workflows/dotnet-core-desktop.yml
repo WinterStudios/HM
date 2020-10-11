@@ -76,4 +76,3 @@ jobs:
         asset_path: D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\Release.zip
         asset_name: Release.zip
         asset_content_type: application/zip
-   

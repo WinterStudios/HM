@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>HM_App.API</AssemblyName>
     <RootNamespace>HM_App.API</RootNamespace>
+    <AssemblyVersion>20.10.11.0124</AssemblyVersion>
+    <FileVersion>20.10.11.0124</FileVersion>
   </PropertyGroup>
 
 </Project>
