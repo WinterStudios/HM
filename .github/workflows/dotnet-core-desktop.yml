@@ -41,7 +41,7 @@ jobs:
       run: dotnet build $env:Test_Project_Path
     
     - name: Zip Build Release
-      run: Compress-Archive -path D:\a\HM\HM\HM\HM.App\bin\Debug\netcoreapp3.1\ -DestinationPath D:\a\HM\HM\HM\HM.App\bin\Debug\netcoreapp3.1\Release.zip
+      run: Compress-Archive -path D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\ -DestinationPath D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\Release.zip
       
     - name: Create tag if necessary
       id: version
@@ -73,7 +73,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: D:\a\HM\HM\HM\HM.App\bin\Debug\netcoreapp3.1\Release.zip
+        asset_path: D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\Release.zip
         asset_name: Release.zip
         asset_content_type: application/zip
-   
