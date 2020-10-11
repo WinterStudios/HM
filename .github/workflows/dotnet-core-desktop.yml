@@ -17,7 +17,7 @@ jobs:
 
     env:
       Solution_Name: HM\HM.sln                    # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: HM\HM_App\_HM.App.csproj               # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+      Test_Project_Path: HM\HM_App\HM_App.csproj               # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
   
 
     steps:
