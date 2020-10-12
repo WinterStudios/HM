@@ -13,15 +13,15 @@ namespace HM_App.API.GitHub
     {
         public static string GitHubUrl { get => "https://api.github.com/"; }
 
-        public static Release GetReleaseLastet(string username, string repositoryName) => GetRelease(username, repositoryName, true).FirstOrDefault();
+        public static Release GetReleaseLastet(string username, string repositoryName, string? token) => GetRelease(username, repositoryName, true, token).FirstOrDefault();
 
-        public static IEnumerable<Release> GetRelease(string username, string repositoryName) => GetRelease(username, repositoryName, false);
+        public static IEnumerable<Release> GetRelease(string username, string repositoryName, string? token) => GetRelease(username, repositoryName, false, token);
 
 
 
 
         // Private fucntions
-        private static IEnumerable<Release> GetRelease(string username, string repositoryName, bool lastRelease)
+        private static IEnumerable<Release> GetRelease(string username, string repositoryName, bool lastRelease, string? token)
         {
             string url = string.Empty;
             if(lastRelease)
@@ -29,10 +29,19 @@ namespace HM_App.API.GitHub
             else
                 url = string.Format("{0}repos/{1}/{2}/releases", GitHubUrl, username, repositoryName);
 
+
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             request.UserAgent = "Anything";
             request.ServicePoint.Expect100Continue = false;
+            request.Accept = "application/vnd.github.v3.raw";
+
+            if (!string.IsNullOrEmpty(token))
+            {
+                string credentials = string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", token);
+                credentials = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(credentials));
+                request.Headers.Add(HttpRequestHeader.Authorization, string.Concat("token ", token));
+            }
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             StreamReader reader = new StreamReader(response.GetResponseStream());
