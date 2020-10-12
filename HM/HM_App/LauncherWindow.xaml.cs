@@ -27,15 +27,18 @@ namespace HM_App
         {
             InitializeComponent();
             Task checkVersion = InitializeProcess();
+            //LauncherApp.CheckVersion();
         }
         private async Task InitializeProcess()
         {
             W_TextBlock_InfoProgress.Text = "Initialize App";
-            await Task.Delay(1000);
 
+            API.Properties.Settings.Load();
+
+
+
+            await Task.Delay(1000);
             Release release = API.GitHub.GitHubClient.GetReleaseLastet("WinterStudios", "HM", "24124c08069e1e1c1f35e7bebfa9d5b179f49dc9");
-            Trace.WriteLine(Assembly.GetExecutingAssembly().FullName);
-            Trace.WriteLine(release.TagName);
 
 
             //MainWindow main = new MainWindow();

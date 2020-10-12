@@ -23,7 +23,7 @@ namespace HM_App.API
                 beta = 2,
                 preview = 3,
                 rc = 4,
-                f = 5
+                r = 5
             }
             public PreRelease? Release { get; set; }
             public int? Revision { get; set; }
@@ -45,7 +45,7 @@ namespace HM_App.API
             }
             public PATCH GetFinal(int? revision)
             {
-                return new PATCH(PreRelease.f, revision);
+                return new PATCH(PreRelease.r, revision);
             }
 
 
@@ -109,7 +109,7 @@ namespace HM_App.API
             return semSystem;
         }
 
-        public static SemVersion GetVersionFromGitHub(string version) => SemVersion.Parse(version);
+        public static SemVersion GetVersionFromGitHub(string version) => SemVersion.Parse(version.Replace("v",""));
 
 
 

@@ -6,12 +6,12 @@ namespace HM_App.Test
     {
         static void Main(string[] args)
         {
-            while (true)
-            {
-                string v = Console.ReadLine();
-                Console.WriteLine(API.SemVersion.GetVersionFromGitHub(v).ToString());
-            }
-            
+            // while (true)
+            // {
+            //     string v = Console.ReadLine();
+            //     Console.WriteLine(API.SemVersion.GetVersionFromGitHub(v).ToString());
+            // }
+            Console.WriteLine();
         }
     }
 }
