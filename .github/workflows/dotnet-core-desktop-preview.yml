@@ -17,6 +17,7 @@ jobs:
 
     env:
       Solution_Name: HM\HM.sln                    # Replace with your solution name, i.e. MyWpfApp.sln.
+      Main_Project_Path: HM\HM_App\HM_App.csproj
       Test_Project_Path: HM\HM_App\HM_App.csproj               # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
   
 
@@ -38,14 +39,14 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Buid App
-      run: dotnet build $env:Test_Project_Path
+      run: dotnet build $env:Main_Project_Path
     
     - name: Zip Build Release
       run: Compress-Archive -path D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\ -DestinationPath D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\Release.zip
       
     - name: Create tag if necessary
       id: version
-      run: echo "::set-output name=ver::$('v0.{0}-preview' -f (get-date -format yy\.MMdd))"
+      run: dotnet run $env:Test_Project_Path -- -output -versionToGitHub
         
     - name: Set outputs
       id: vars
