@@ -16,7 +16,7 @@ namespace HM_App
         public static bool Debug { get; protected set; }
         public static void Initialize()
         {
-
+            GetLocalVersion();
         }
         public static SemVersion GetLocalVersion()
         {
