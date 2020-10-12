@@ -46,7 +46,7 @@ jobs:
       
     - name: Set outputs
       id: vars
-      run: echo "ver=$(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)">> $GITHUB_ENV
+      run: echo "ver=::$(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)">> $GITHUB_ENV
       shell: powershell
     - name: Check outputs
       run: echo "$env.ver"
@@ -57,7 +57,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ env.ver }}
+        tag_name: $env.ver
         release_name: ${{ env.ver }}
         draft: false
         prerelease: true
