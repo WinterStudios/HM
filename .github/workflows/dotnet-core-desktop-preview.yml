@@ -1,0 +1,79 @@
+name: .NET Core Desktop - Preview Branch
+
+on:
+  push:
+    branches: 
+      - preview
+
+jobs:
+  build:
+
+    strategy:
+      matrix:
+        configuration: [Release]
+
+    runs-on: windows-latest  # For a list of available runner types, refer to
+                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+
+    env:
+      Solution_Name: HM\HM.sln                    # Replace with your solution name, i.e. MyWpfApp.sln.
+      Main_Project_Path: HM\HM_App\HM_App.csproj
+      Test_Project_Path: HM\HM_App\HM_App.csproj               # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+  
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+
+    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@2008f912f56e61277eefaac6d1888b750582aa16
+
+    # Execute all unit tests in the solution
+    - name: Buid App
+      run: dotnet build $env:Main_Project_Path
+    
+    - name: Zip Build Release
+      run: Compress-Archive -path D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\ -DestinationPath D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\Release.zip
+      
+    - name: Create tag if necessary
+      id: version
+      run: dotnet run $env:Test_Project_Path -- -output -versionToGitHub
+        
+    - name: Set outputs
+      id: vars
+      shell: pwsh
+      run: echo "::set-env name=ver::$('v0.{0}-rc' -f (get-date -format yy\.MMdd))"
+    - name: Check outputs
+      shell: pwsh
+      run: echo ${{ env.ver }}
+      
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.ver }}
+        release_name: ${{ env.ver }}
+        draft: false
+        prerelease: false
+      
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\Release.zip
+        asset_name: Release.zip
+        asset_content_type: application/zip
