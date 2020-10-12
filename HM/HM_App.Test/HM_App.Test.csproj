@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HM_APP.API\HM_APP.API.csproj" />
+    <ProjectReference Include="..\HM_App\HM_App.csproj" />
   </ItemGroup>
 
 </Project>
