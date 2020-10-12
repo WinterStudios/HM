@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HM_App", "HM_App\HM_App.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HM_APP.API", "HM_APP.API\HM_APP.API.csproj", "{54E782CE-8311-4C93-A0E9-AE11823C6D0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HM_App.Test", "HM_App.Test\HM_App.Test.csproj", "{519F4042-C589-4A2C-B9E2-7F9469DF9F83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HM_App.Test", "HM_App.Test\HM_App.Test.csproj", "{519F4042-C589-4A2C-B9E2-7F9469DF9F83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

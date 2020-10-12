@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace HM_App.Test
 {
@@ -6,12 +7,23 @@ namespace HM_App.Test
     {
         static void Main(string[] args)
         {
-            while (true)
-            {
-                string v = Console.ReadLine();
-                Console.WriteLine(API.SemVersion.GetVersionFromGitHub(v).ToString());
-            }
             
+            switch (args[0])
+            {
+                case "-output":
+                    switch (args[1])
+                    {
+                        case "-versionToGitHub":
+                            string assemblyLocation = AppDomain.CurrentDomain.BaseDirectory + "HM_App.dll";
+                            Console.WriteLine(assemblyLocation);
+                            string version = System.Diagnostics.FileVersionInfo.GetVersionInfo(assemblyLocation).FileVersion;
+                            Console.WriteLine(string.Format("v{0}", API.SemVersion.GetVersionFromAssembly(version)));
+                            break;
+                    }
+                    break;
+
+            }
+            Console.WriteLine();
         }
     }
 }
