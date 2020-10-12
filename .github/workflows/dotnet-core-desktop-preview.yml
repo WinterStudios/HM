@@ -50,7 +50,7 @@ jobs:
       run: echo "::set-output name=ver::$(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)"
     - name: Check outputs
       shell: pwsh
-      run: echo ${ steps.vars.output.ver }
+      run: echo ${{ steps.vars.output.ver }}
       
     - name: Create Release
       id: create_release
@@ -58,8 +58,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${ steps.vars.output.ver }
-        release_name: ${ steps.vars.output.ver }
+        tag_name: ${{ steps.vars.output.ver }}
+        release_name: ${{ steps.vars.output.ver }}
         draft: false
         prerelease: true
       
