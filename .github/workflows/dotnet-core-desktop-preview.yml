@@ -58,8 +58,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: echo "::$(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)"
-        release_name: echo "::$(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)"
+        tag_name: ${{ echo "::$(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)" }}
+        release_name: ${{ echo "::$(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)" }}
         draft: false
         prerelease: true
       
