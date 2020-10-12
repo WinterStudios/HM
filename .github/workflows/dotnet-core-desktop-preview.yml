@@ -46,11 +46,10 @@ jobs:
       
     - name: Set outputs
       id: vars
-      shell: pwsh
-      run: echo "::set-output name=ver::$(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)"
+      run: echo "::set-env name=ver::$(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)"
+      shell: powershell
     - name: Check outputs
-      shell: pwsh
-      run: echo ${{ steps.vars.output.ver }}
+      run: echo "::set ${{ env.ver }}
       
     - name: Create Release
       id: create_release
