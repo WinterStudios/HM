@@ -18,6 +18,9 @@ namespace HM_App.Test
                             string version = System.Diagnostics.FileVersionInfo.GetVersionInfo(assemblyLocation).FileVersion;
                             Console.WriteLine(string.Format("v{0}", API.SemVersion.GetVersionFromAssembly(version)));
                             break;
+                        case "-versionToGitHubFinal":
+
+                            break;
                     }
                     break;
 

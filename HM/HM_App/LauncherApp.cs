@@ -17,6 +17,9 @@ namespace HM_App
         public static void Initialize()
         {
             GetLocalVersion();
+            GetOnlineVersion(null);
+            Trace.WriteLine(AppVersion.ToString());
+            Trace.WriteLine(OnlineVersion.ToString());
         }
         public static SemVersion GetLocalVersion()
         {
