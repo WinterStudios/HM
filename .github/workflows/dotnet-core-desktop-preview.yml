@@ -44,12 +44,9 @@ jobs:
     - name: Zip Build Release
       run: Compress-Archive -path D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\ -DestinationPath D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\Release.zip
             
-    - name: Get Assembly Version
-      id: get_version
+    - name: Get Preview Version
       shell: pwsh
-      run: |
-          $output=(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)
-          Write-Output "::set-output name=VER::$output"
+      run: echo "::set-env name=VER::$(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)"
 
           
     - name: Create Release
@@ -58,8 +55,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ steps.get_version.output.VER }}
-        release_name: v${{ steps.get_version.output.VER }}
+        tag_name: v${{ env.VER }}
+        release_name: v${{ env.VER }}
         draft: false
         prerelease: true
       
