@@ -44,14 +44,20 @@ jobs:
     - name: Zip Build Release
       run: Compress-Archive -path D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\ -DestinationPath D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\Release.zip
             
+    - name: Get Assembly Version
+      id: get_version
+      uses: jasondavis303/net-sdk-proj-file-version@v1.0.1
+      with: 
+        PROJ_FILE: $env:Main_Project_Path 
+          
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub }}
-        release_name: ${{ dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub }}
+        tag_name: v${{ steps.get_version.outputs.ASSEMBLY_VERSION }}
+        release_name: v${{ steps.get_version.outputs.ASSEMBLY_VERSION }}
         draft: false
         prerelease: true
       
