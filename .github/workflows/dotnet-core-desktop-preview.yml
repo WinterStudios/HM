@@ -43,29 +43,22 @@ jobs:
     
     - name: Zip Build Release
       run: Compress-Archive -path D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\ -DestinationPath D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\Release.zip
-      
-    - name: Create tag if necessary
-      id: version
-      run: dotnet run $env:Test_Project_Path -- -output -versionToGitHub
-        
-    - name: Set outputs
-      id: vars
+            
+    - name: Get Preview Version
       shell: pwsh
-      run: echo "::set-env name=ver::$('v0.{0}-rc' -f (get-date -format yy\.MMdd))"
-    - name: Check outputs
-      shell: pwsh
-      run: echo ${{ env.ver }}
-      
+      run: echo "::set-env name=VER::$(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)"
+
+          
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ env.ver }}
-        release_name: ${{ env.ver }}
+        tag_name: v${{ env.VER }}
+        release_name: v${{ env.VER }}
         draft: false
-        prerelease: false
+        prerelease: true
       
     - name: Upload Release Asset
       id: upload-release-asset 
