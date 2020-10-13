@@ -46,9 +46,11 @@ jobs:
             
     - name: Get Assembly Version
       id: get_version
-      uses: jasondavis303/net-sdk-proj-file-version@v1.0.1
-      with: 
-        PROJ_FILE: HM\HM_App\HM_App.csproj
+      shell: pwsh
+      run: |
+          $output=(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)
+          Write-Output "::set-output name=VER::$output"
+
           
     - name: Create Release
       id: create_release
@@ -56,8 +58,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ steps.get_version.outputs.ASSEMBLY_VERSION }}
-        release_name: v${{ steps.get_version.outputs.ASSEMBLY_VERSION }}
+        tag_name: v${{ steps.get_version.output.VER }}
+        release_name: v${{ steps.get_version.output.VER }}
         draft: false
         prerelease: true
       
