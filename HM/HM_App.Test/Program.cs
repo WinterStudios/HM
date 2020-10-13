@@ -14,8 +14,7 @@ namespace HM_App.Test
                     switch (args[1])
                     {
                         case "-versionToGitHub":
-                            string assemblyLocation = "D:\\a\\HM\\HM\\HM\\HM_App\\bin\\Debug\\netcoreapp3.1\\HM_App.dll";
-                            Console.WriteLine(assemblyLocation);
+                            string assemblyLocation = "C:\\Users\\hugo_\\source\\repos\\WinterStudios\\HM\\HM\\HM_App\\bin\\Debug\\netcoreapp3.1\\HM_App.dll"; //"D:\\a\\HM\\HM\\HM\\HM_App\\bin\\Debug\\netcoreapp3.1\\HM_App.dll";
                             string version = System.Diagnostics.FileVersionInfo.GetVersionInfo(assemblyLocation).FileVersion;
                             Console.WriteLine(string.Format("v{0}", API.SemVersion.GetVersionFromAssembly(version)));
                             break;
