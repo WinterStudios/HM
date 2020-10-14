@@ -6,6 +6,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
+using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace HM_App.API.GitHub
 {
@@ -32,7 +34,7 @@ namespace HM_App.API.GitHub
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
-            request.UserAgent = "Anything";
+            request.UserAgent = "HM_App";
             request.ServicePoint.Expect100Continue = false;
             request.Accept = "application/vnd.github.v3.raw";
 
@@ -68,10 +70,41 @@ namespace HM_App.API.GitHub
                 releases = JsonSerializer.Deserialize<List<Release>>(json, options);
                 return releases;
             }
-                
+        }
 
-            
-            
+        /// <summary>
+        /// Download Release.zip from Release
+        /// </summary>
+        /// <param name="release">GitHub Release</param>
+        /// <param name="outputDirectory">Output Directory</param>
+        /// <param name="token">Private Token, case repos is private</param>
+        /// <returns></returns>
+        public static object DownloadRelease(Release release, string outputDirectory, string token)
+        {
+            Assets asset = release.Assets.FirstOrDefault(x => x.Name == "Release.zip");
+            string url = asset.URL;// + string.Format("?access_token={0}", token);
+            Trace.WriteLine(url);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+            request.UserAgent = "HM_APP";
+            request.Accept = "application/octet-stream";
+            request.ServicePoint.Expect100Continue = false;
+            request.Method = "GET";
+            request.Headers.Add(HttpRequestHeader.Authorization, string.Concat("token ", token));
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream stream = response.GetResponseStream();
+            FileStream file = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "/" + asset.Name, FileMode.Create, System.IO.FileAccess.Write);
+            byte[] buffer = new byte[8 * 1024];
+            int read = 0;
+            while((read = stream.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                file.Write(buffer, 0, read);
+            }
+            file.Close();
+
+            return null;
         }
 
     }

@@ -26,8 +26,8 @@ namespace HM_App
         public LauncherWindow()
         {
             InitializeComponent();
-            Task checkVersion = InitializeProcess();
-            //LauncherApp.CheckVersion();
+            //Task checkVersion = InitializeProcess();
+            LauncherApp.Initialize();
         }
         private async Task InitializeProcess()
         {
