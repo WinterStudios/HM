@@ -1,9 +1,10 @@
-﻿using HM_App.API;
-using HM_App.API.GitHub;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using HM_App.API;
+using HM_App.API.GitHub;
+using HM_App.API.Properties;
 
 namespace HM_App
 {
@@ -12,19 +13,22 @@ namespace HM_App
         public static bool AllowUpdate { get => false; }
         public static SemVersion AppVersion { get; private set; }
         public static SemVersion OnlineVersion { get; private set; }
-        private static string Token { get => "24124c08069e1e1c1f35e7bebfa9d5b179f49dc9"; }
+        private static string Token { get => "58221a498d9af2d31783e71eb563494968cd62bc"; }
         public static bool Debug { get; protected set; }
         public static void Initialize()
         {
+            Settings.Load();
             GetLocalVersion();
             GetOnlineVersion(null);
             Trace.WriteLine(AppVersion.ToString());
             Trace.WriteLine(OnlineVersion.ToString());
+            if (Settings._Settings.ALLOW_UPDATE)
+                GitHubClient.DownloadRelease(GitHubClient.GetReleaseLastet("WinterStudios", "HM", Token), AppDomain.CurrentDomain.BaseDirectory, Token);
         }
         public static SemVersion GetLocalVersion()
         {
             var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            var fileVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(assemblyLocation).FileVersion;
+            var fileVersion = FileVersionInfo.GetVersionInfo(assemblyLocation).FileVersion;
             AppVersion = SemVersion.GetVersionFromAssembly(fileVersion);
             
             return AppVersion;

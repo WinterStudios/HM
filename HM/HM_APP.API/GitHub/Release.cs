@@ -15,5 +15,8 @@ namespace HM_App.API.GitHub
         public string TagName { get; set; }
         [JsonPropertyName("name")]
         public string Name { get; set; }
+
+        [JsonPropertyName ("assets")]
+        public Assets[] Assets { get; set; }
     }
 }
