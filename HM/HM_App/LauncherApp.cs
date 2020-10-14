@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using HM_App.API;
 using HM_App.API.GitHub;
@@ -19,12 +20,21 @@ namespace HM_App
         {
             Settings.Load();
             GetLocalVersion();
-            GetOnlineVersion(null);
-            Trace.WriteLine(AppVersion.ToString());
-            Trace.WriteLine(OnlineVersion.ToString());
+            if(Settings._Settings.ALLOW_UPDATE)
+                CheckForUpdate();
+            
             if (Settings._Settings.ALLOW_UPDATE)
                 GitHubClient.DownloadRelease(GitHubClient.GetReleaseLastet("WinterStudios", "HM", Token), AppDomain.CurrentDomain.BaseDirectory, Token);
         }
+
+        private static void CheckForUpdate()
+        {
+            if(Settings._Settings.ALLOW_PRE_RELEASE)
+            {
+                Release preRelease = GitHubClient.GetRelease("WinterStudios", "HM", Token).FirstOrDefault(x => x.PreRelease == true);
+            }
+        }
+
         public static SemVersion GetLocalVersion()
         {
             var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
@@ -33,6 +43,9 @@ namespace HM_App
             
             return AppVersion;
         }
+
+        /// private static 
+
         /// <summary>
         /// Get the Online Version
         /// </summary>
@@ -40,13 +53,18 @@ namespace HM_App
         /// <remarks>
         /// <para>If true gets Pre-Release Version</para>
         /// <para>If false gets Development Version</para>
-        /// <para>If Null gets Release Version</para>
+        /// <para>If Null gets Last Release Version</para>
         /// </remarks>
-        public static SemVersion GetOnlineVersion(bool? preRelease)
-        {
-            Release lastRelease = GitHubClient.GetReleaseLastet("WinterStudios", "HM", Token);
-            OnlineVersion = SemVersion.GetVersionFromGitHub(lastRelease.TagName);
-            return OnlineVersion;
-        }
+        /// public static Release GetOnlineVersion(bool? preRelease)
+        /// {
+        ///     switch (preRelease)
+        ///     {
+        ///         case null:
+        ///             break;
+        ///     }
+        ///     Release lastRelease = GitHubClient.GetReleaseLastet("WinterStudios", "HM", Token);
+        ///     OnlineVersion = SemVersion.GetVersionFromGitHub(lastRelease.TagName);
+        ///     return OnlineVersion;
+        /// }
     }
 }

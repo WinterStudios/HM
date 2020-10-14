@@ -16,5 +16,7 @@ namespace HM_App.API.Properties
                 return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "/HM/";
             }
         }
+
+        public static string SettingsPath { get => LocalApplicationData + "settings.xml"; }
     }
 }

@@ -13,10 +13,18 @@ namespace HM_App.API.GitHub
         public long ID { get; set; }
         [JsonPropertyName("tag_name")]
         public string TagName { get; set; }
+        [JsonPropertyName("target_commitish")]
+        public string Branch { get; set; }
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonPropertyName ("assets")]
+        [JsonPropertyName("prerelease")]
+        public bool PreRelease { get; set; }
+        [JsonPropertyName("created-at")]
+        public DateTime CreateDate { get; set; }
+        [JsonPropertyName("published_at")]
+        public DateTime PublishedDate { get; set; }
+        [JsonPropertyName("assets")]
         public Assets[] Assets { get; set; }
     }
 }

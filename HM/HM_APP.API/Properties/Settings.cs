@@ -10,8 +10,6 @@ namespace HM_App.API.Properties
 {
     public class Settings
     {
-        public static string SettingPath { get => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/HM/Settings.xml"; }
-        public static string SettingFolder { get => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/HM/"; }
         public static Settings _Settings { get; set; }
         public bool DEBUG_DEVELOPMENT_MODE { get; set; }
         public bool ALLOW_PRE_RELEASE { get; set; }
@@ -19,8 +17,14 @@ namespace HM_App.API.Properties
 
         public static void Load()
         {
+            if (!File.Exists(Paths.SettingsPath))
+            {
+                LoadDefault();
+                Save();
+                return;
+            }
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
-            StreamReader stream = new StreamReader(SettingPath);
+            StreamReader stream = new StreamReader(Paths.SettingsPath);
             _Settings = (Settings)serializer.Deserialize(stream);
             stream.Close();
         }
@@ -36,9 +40,7 @@ namespace HM_App.API.Properties
             Settings settings = new Settings();
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
 
-            if (!Directory.Exists(SettingFolder))
-                Directory.CreateDirectory(SettingFolder);
-            StreamWriter stream = new StreamWriter(SettingPath);
+            StreamWriter stream = new StreamWriter(Paths.SettingsPath);
 
             serializer.Serialize(stream, settings);
             stream.Close();
