@@ -1,7 +1,7 @@
 name: .NET Core Desktop - Preview Branch
 
 on:
-  push:
+  pull_request:
     branches: 
       - preview
 
