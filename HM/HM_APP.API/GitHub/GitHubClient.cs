@@ -95,7 +95,7 @@ namespace HM_App.API.GitHub
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream stream = response.GetResponseStream();
-            FileStream file = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "/" + asset.Name, FileMode.Create, System.IO.FileAccess.Write);
+            FileStream file = new FileStream(outputDirectory + "/" + asset.Name, FileMode.Create, System.IO.FileAccess.Write);
             byte[] buffer = new byte[8 * 1024];
             int read = 0;
             while((read = stream.Read(buffer, 0, buffer.Length)) > 0)

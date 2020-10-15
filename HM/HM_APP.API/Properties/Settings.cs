@@ -14,6 +14,7 @@ namespace HM_App.API.Properties
         public bool DEBUG_DEVELOPMENT_MODE { get; set; }
         public bool ALLOW_PRE_RELEASE { get; set; }
         public bool ALLOW_UPDATE { get; set; }
+        public bool ALLOW_AUTOMATIC_UPDATE { get; set; }
 
         public static void Load()
         {

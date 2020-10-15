@@ -23,15 +23,42 @@ namespace HM_App
             if(Settings._Settings.ALLOW_UPDATE)
                 CheckForUpdate();
             
-            if (Settings._Settings.ALLOW_UPDATE)
-                GitHubClient.DownloadRelease(GitHubClient.GetReleaseLastet("WinterStudios", "HM", Token), AppDomain.CurrentDomain.BaseDirectory, Token);
+            //if (Settings._Settings.ALLOW_UPDATE)
+            //    GitHubClient.DownloadRelease(GitHubClient.GetReleaseLastet("WinterStudios", "HM", Token), AppDomain.CurrentDomain.BaseDirectory, Token);
         }
 
         private static void CheckForUpdate()
         {
             if(Settings._Settings.ALLOW_PRE_RELEASE)
             {
-                Release preRelease = GitHubClient.GetRelease("WinterStudios", "HM", Token).FirstOrDefault(x => x.PreRelease == true);
+                Release preRelease = GitHubClient.GetRelease("WinterStudios", "HM", Token).FirstOrDefault(x => x.PreRelease == true && x.Branch == API.GitHub.Internal.Branch.development);
+                OnlineVersion = SemVersion.GetVersionFromGitHub(preRelease.TagName);
+                bool updateAvalable = SemVersion.Compare(AppVersion, OnlineVersion);
+                if(Settings._Settings.ALLOW_UPDATE)
+                {
+                    bool newUpdate = SemVersion.Compare(AppVersion, OnlineVersion);
+                    if(newUpdate || Settings._Settings.DEBUG_DEVELOPMENT_MODE)
+                    {
+                        if(Settings._Settings.ALLOW_AUTOMATIC_UPDATE)
+                        {
+                            try
+                            {
+                                GitHubClient.DownloadRelease(preRelease, Paths.LocalApplicagionDataDownloads, Token);
+                            }
+                            catch (GitHubExceptions ex)
+                            {
+                                
+                            }
+                            
+                        }
+                        else
+                        {
+                            // Add to Notification QUEUE that is a new Update
+                        }
+                    }
+
+                } 
+
             }
         }
 

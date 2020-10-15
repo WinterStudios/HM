@@ -59,6 +59,7 @@ jobs:
         release_name: v${{ env.VER }}
         draft: false
         prerelease: true
+        commitish: preview
       
     - name: Upload Release Asset
       id: upload-release-asset 
