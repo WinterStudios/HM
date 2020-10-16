@@ -1,7 +1,7 @@
 name: .NET Core Desktop - Preview Branch
 
 on:
-  push:
+  pull_request:
     branches: 
       - preview
 
@@ -37,17 +37,15 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@2008f912f56e61277eefaac6d1888b750582aa16
 
+    - name: Get Preview Version
+      shell: pwsh
+      run: echo "::set-env name=VER::$(dotnet run --project $env:Test_Project_Path -- -setVersion -preview)"
     # Execute all unit tests in the solution
     - name: Buid App
       run: dotnet build $env:Main_Project_Path
     
     - name: Zip Build Release
       run: Compress-Archive -path D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\ -DestinationPath D:\a\HM\HM\HM\HM_App\bin\Debug\netcoreapp3.1\Release.zip
-            
-    - name: Get Preview Version
-      shell: pwsh
-      run: echo "::set-env name=VER::$(dotnet run --project $env:Test_Project_Path -- -output -versionToGitHub)"
-
           
     - name: Create Release
       id: create_release
