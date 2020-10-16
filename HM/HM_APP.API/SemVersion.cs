@@ -19,11 +19,9 @@ namespace HM_App.API
         {
             public enum PreRelease
             {
-                alpha = 1,
-                beta = 2,
-                preview = 3,
-                rc = 4,
-                r = 5
+                development = 1,
+                preview = 2,
+                r = 3
             }
             public PreRelease? Release { get; set; }
             public int? Revision { get; set; }
@@ -48,6 +46,7 @@ namespace HM_App.API
                 return new PATCH(PreRelease.r, revision);
             }
 
+            public string GetPatchToAssembly() => string.Format("{0}{1}", (int)Release, Revision);
 
             public static PATCH Parse(string patch)
             {
@@ -110,7 +109,10 @@ namespace HM_App.API
             Patch = patch;
         }
 
-        
+        public string ToAssemblyFormat()
+        {
+            return string.Format("{0}.{1}.{2}.{3}", Major, Minor, Build, Patch.GetPatchToAssembly());
+        }
 
         public static SemVersion GetVersionFromAssembly(string version)
         {
