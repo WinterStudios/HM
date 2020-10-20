@@ -4,11 +4,11 @@ It a app that is being create to help on day to day basics of a Enterprise Busin
 
 # Current Status
 
-[![GitHub issues](https://img.shields.io/github/issues-raw/WinterStudios/MeioMundo)](https://github.com/WinterStudios/MeioMundo/issues)
-[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/WinterStudios/MeioMundo?color=green)](https://github.com/WinterStudios/MeioMundo/issues?q=is%3Aclosed)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/WinterStudios/MeioMundo?include_prereleases)](https://github.com/WinterStudios/MeioMundo/releases/latest)
-![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/WinterStudios/MeioMundo)
-[![GitHub milestone](https://img.shields.io/github/milestones/progress-percent/WinterStudios/MeioMundo/1)](https://github.com/WinterStudios/MeioMundo/milestone/1)
+[![GitHub issues](https://img.shields.io/github/issues-raw/WinterStudios/HM)](https://github.com/WinterStudios/HM/issues)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/WinterStudios/HM?color=green)](https://github.com/WinterStudios/HM/issues?q=is%3Aclosed)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/WinterStudios/HM?include_prereleases)](https://github.com/WinterStudios/HM/releases/latest)
+![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/WinterStudios/HM)
+[![GitHub milestone](https://img.shields.io/github/milestones/progress-percent/WinterStudios/HM/1)](https://github.com/WinterStudios/HM/milestone/1)
 ![.NET Core Desktop](https://github.com/WinterStudios/HM/workflows/.NET%20Core%20Desktop/badge.svg)
 
 # Features
