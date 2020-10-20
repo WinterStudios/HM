@@ -13,7 +13,7 @@ namespace HM_App
 {
     class LauncherApp
     {
-        public static bool AllowUpdate { get => false; }
+
         public static SemVersion AppVersion { get; private set; }
         public static SemVersion OnlineVersion { get; private set; }
         private static string Token { get => "58221a498d9af2d31783e71eb563494968cd62bc"; }
@@ -43,13 +43,29 @@ namespace HM_App
                 if (updateAvalable && Settings._Settings.ALLOW_AUTOMATIC_UPDATE)
                 {
                     GitHubClient.DownloadRelease(preRelease, Paths.LocalApplicagionDataDownloads, Token);
-
                     UpdateApp();
+                    App.Current.Shutdown();
                     // reset
                     // Add to notification System
                 }
                 // if(updateAvalable)
                     // add to notification System
+            }
+            else
+            {
+                Release release = GitHubClient.GetRelease("WinterStudios", "HM", Token).FirstOrDefault(x => x.PreRelease == false && x.Branch == API.GitHub.Internal.Branch.main);
+                OnlineVersion = SemVersion.GetVersionFromGitHub(release.TagName);
+                bool updateAvalable = SemVersion.Compare(AppVersion, OnlineVersion);
+                if (updateAvalable && Settings._Settings.ALLOW_AUTOMATIC_UPDATE)
+                {
+                    GitHubClient.DownloadRelease(release, Paths.LocalApplicagionDataDownloads, Token);
+                    UpdateApp();
+                    App.Current.Shutdown();
+                    // reset
+                    // Add to notification System
+                }
+                // if(updateAvalable)
+                // add to notification System
             }
         }
 
@@ -57,14 +73,16 @@ namespace HM_App
         {
             string updateExe = AppDomain.CurrentDomain.BaseDirectory + "Update.exe";
             string updateDll = AppDomain.CurrentDomain.BaseDirectory + "Update.dll";
-
+            string updateJsonRuntime = AppDomain.CurrentDomain.BaseDirectory + "Update.runtimeconfig.json";
+            
             File.Copy(updateExe, Paths.LocalApplicationDataUpdate + "Update.exe", true);
             File.Copy(updateDll, Paths.LocalApplicationDataUpdate + "Update.dll", true);
-
+            File.Copy(updateJsonRuntime, Paths.LocalApplicationDataUpdate + "Update.runtimeconfig.json", true);
+            
             Process process = new Process();
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = Paths.LocalApplicationDataUpdate + "Update.exe";
-            startInfo.Arguments = string.Format("-{0} {1} {2}", "update", Paths.LocalApplicagionDataDownloads, AppDomain.CurrentDomain.BaseDirectory);
+            startInfo.Arguments = string.Format("{0} {1} {2}", "-update", Paths.LocalApplicagionDataDownloads, AppDomain.CurrentDomain.BaseDirectory);
             process.StartInfo = startInfo;
             process.Start();
         }
@@ -80,10 +98,10 @@ namespace HM_App
 
         private static void LoadWindow()
         {
-            
+
             MainWindowThread = new Thread(() =>
             {
-                MainWindow mainWindow = new MainWindow();
+                Window_HM mainWindow = new Window_HM();
                 mainWindow.Show();
                 System.Windows.Threading.Dispatcher.Run();
             })

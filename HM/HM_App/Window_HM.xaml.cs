@@ -13,15 +13,14 @@ using System.Windows.Shapes;
 namespace HM_App
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Window_HM.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Window_HM : Window
     {
-        public MainWindow()
+        public Window_HM()
         {
-            
+            InitializeComponent();
         }
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 

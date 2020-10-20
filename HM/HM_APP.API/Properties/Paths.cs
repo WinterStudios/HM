@@ -15,9 +15,9 @@ namespace HM_App.API.Properties
         {
             get
             {
-                if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "/HM/"))
-                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "/HM/");
-                return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "/HM/";
+                if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\HM\\"))
+                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\HM\\");
+                return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\HM\\";
             }
         }
         /// <summary>
@@ -26,16 +26,16 @@ namespace HM_App.API.Properties
         /// <remarks>C:\Users\[user]\AppData\Local\HM\Downloads\</remarks>
         public static string LocalApplicagionDataDownloads { get
             {
-                if (!Directory.Exists(LocalApplicationData + "Downloads/"))
-                    Directory.CreateDirectory(LocalApplicationData + "Downloads/");
-                return LocalApplicationData + "Downloads/";
+                if (!Directory.Exists(LocalApplicationData + "Downloads\\"))
+                    Directory.CreateDirectory(LocalApplicationData + "Downloads\\");
+                return LocalApplicationData + "Downloads\\";
             } }
 
         public static string LocalApplicationDataUpdate { get
             {
-                if (!Directory.Exists(LocalApplicationData + "Update/"))
-                    Directory.CreateDirectory(LocalApplicationData + "Update/");
-                return LocalApplicationData + "Update/";
+                if (!Directory.Exists(LocalApplicationData + "Update\\"))
+                    Directory.CreateDirectory(LocalApplicationData + "Update\\");
+                return LocalApplicationData + "Update\\";
             } } 
 
         public static string SettingsPath { get => LocalApplicationData + "settings.xml"; }
