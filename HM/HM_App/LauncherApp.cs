@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -42,12 +43,30 @@ namespace HM_App
                 if (updateAvalable && Settings._Settings.ALLOW_AUTOMATIC_UPDATE)
                 {
                     GitHubClient.DownloadRelease(preRelease, Paths.LocalApplicagionDataDownloads, Token);
+
+                    UpdateApp();
                     // reset
                     // Add to notification System
                 }
                 // if(updateAvalable)
                     // add to notification System
             }
+        }
+
+        private static void UpdateApp()
+        {
+            string updateExe = AppDomain.CurrentDomain.BaseDirectory + "Update.exe";
+            string updateDll = AppDomain.CurrentDomain.BaseDirectory + "Update.dll";
+
+            File.Copy(updateExe, Paths.LocalApplicationDataUpdate + "Update.exe", true);
+            File.Copy(updateDll, Paths.LocalApplicationDataUpdate + "Update.dll", true);
+
+            Process process = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = Paths.LocalApplicationDataUpdate + "Update.exe";
+            startInfo.Arguments = string.Format("-{0} {1} {2}", "update", Paths.LocalApplicagionDataDownloads, AppDomain.CurrentDomain.BaseDirectory);
+            process.StartInfo = startInfo;
+            process.Start();
         }
 
         public static SemVersion GetLocalVersion()

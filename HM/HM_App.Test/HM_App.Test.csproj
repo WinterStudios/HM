@@ -2,8 +2,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyVersion>0.20.10.38</AssemblyVersion>
-    <FileVersion>0.20.10.38</FileVersion>
+    <AssemblyVersion>0.20.10.42</AssemblyVersion>
+    <FileVersion>0.20.10.42</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <ShouldCreateLogs>False</ShouldCreateLogs>

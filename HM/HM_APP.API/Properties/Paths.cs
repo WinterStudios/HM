@@ -31,6 +31,12 @@ namespace HM_App.API.Properties
                 return LocalApplicationData + "Downloads/";
             } }
 
+        public static string LocalApplicationDataUpdate { get
+            {
+                if (!Directory.Exists(LocalApplicationData + "Update/"))
+                    Directory.CreateDirectory(LocalApplicationData + "Update/");
+                return LocalApplicationData + "Update/";
+            } } 
 
         public static string SettingsPath { get => LocalApplicationData + "settings.xml"; }
     }
