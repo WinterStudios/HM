@@ -19,11 +19,9 @@ namespace HM_App.API
         {
             public enum PreRelease
             {
-                alpha = 1,
-                beta = 2,
-                preview = 3,
-                rc = 4,
-                r = 5
+                development = 1,
+                preview = 2,
+                r = 3
             }
             public PreRelease? Release { get; set; }
             public int? Revision { get; set; }
@@ -48,6 +46,7 @@ namespace HM_App.API
                 return new PATCH(PreRelease.r, revision);
             }
 
+            public string GetPatchToAssembly() => string.Format("{0}{1}", (int)Release, Revision);
 
             public static PATCH Parse(string patch)
             {
@@ -70,6 +69,21 @@ namespace HM_App.API
                 }
 
                 return _patch;
+            }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="v1"></param>
+            /// <param name="v2"></param>
+            /// <returns>Return TRUE if it's equal</returns>
+            public static bool Compare(PATCH p1, PATCH p2)
+            {
+                if (p1.Release != p2.Release)
+                    return true;
+                if (p1.Revision < p2.Revision)
+                    return true;
+
+                return false;
             }
 
             public override string ToString()
@@ -95,7 +109,10 @@ namespace HM_App.API
             Patch = patch;
         }
 
-        
+        public string ToAssemblyFormat()
+        {
+            return string.Format("{0}.{1}.{2}.{3}", Major, Minor, Build, Patch.GetPatchToAssembly());
+        }
 
         public static SemVersion GetVersionFromAssembly(string version)
         {
@@ -112,9 +129,22 @@ namespace HM_App.API
         public static SemVersion GetVersionFromGitHub(string version) => SemVersion.Parse(version.Replace("v",""));
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="v1">App Version</param>
+        /// <param name="v2">Online Version</param>
+        /// <returns>Return TRUE if it's equal</returns>
         public static bool Compare(SemVersion v1, SemVersion v2)
         {
+            if (v1.Major < v2.Major)
+                return true;
+            if (v1.Minor < v2.Minor)
+                return true;
+            if (v1.Build < v2.Build)
+                return true;
+            if (PATCH.Compare(v1.Patch, v2.Patch))
+                return true;
             return false;
         }
 

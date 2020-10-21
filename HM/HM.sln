@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HM_APP.API", "HM_APP.API\HM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HM_App.Test", "HM_App.Test\HM_App.Test.csproj", "{519F4042-C589-4A2C-B9E2-7F9469DF9F83}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Update", "Update\Update.csproj", "{1E5F72EA-B919-4745-B849-8B0E885CC0B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Experience", "WPF_Experience\WPF_Experience.csproj", "{91F84079-E19D-4411-9A62-671949E70F9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{519F4042-C589-4A2C-B9E2-7F9469DF9F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{519F4042-C589-4A2C-B9E2-7F9469DF9F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{519F4042-C589-4A2C-B9E2-7F9469DF9F83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E5F72EA-B919-4745-B849-8B0E885CC0B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5F72EA-B919-4745-B849-8B0E885CC0B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5F72EA-B919-4745-B849-8B0E885CC0B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5F72EA-B919-4745-B849-8B0E885CC0B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91F84079-E19D-4411-9A62-671949E70F9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F84079-E19D-4411-9A62-671949E70F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F84079-E19D-4411-9A62-671949E70F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F84079-E19D-4411-9A62-671949E70F9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -27,33 +27,6 @@ namespace HM_App
         {
             InitializeComponent();
             //Task checkVersion = InitializeProcess();
-            LauncherApp.Initialize();
-        }
-        private async Task InitializeProcess()
-        {
-            W_TextBlock_InfoProgress.Text = "Initialize App";
-
-            API.Properties.Settings.Load();
-
-
-
-            await Task.Delay(1000);
-            Release release = API.GitHub.GitHubClient.GetReleaseLastet("WinterStudios", "HM", "24124c08069e1e1c1f35e7bebfa9d5b179f49dc9");
-
-
-            //MainWindow main = new MainWindow();
-            //main.InitializeComponent();
-            ////while (!main.IsLoaded)
-            ////{
-                //W_TextBlock_InfoProgress.Text = "Loading Main Window";
-                //await Task.Delay(1000);
-            ////}
-            //await Task.Delay(500);
-            //W_TextBlock_InfoProgress.Text = "Loading Finish";
-            //main.Show();
-            //await Task.Delay(500);
-            //this.Close();
-
-        }
+        }        
     }
 }
