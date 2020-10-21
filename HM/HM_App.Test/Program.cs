@@ -39,8 +39,8 @@ namespace HM_App.Test
 
             XmlDocument exe_XmlDoc = new XmlDocument();
             XmlDocument api_XmlDoc = new XmlDocument();
-            string exeProjectFilePath = "..\\..\\..\\..\\HM_App\\HM_App.csproj";
-            string apiProjectFilePath = "..\\..\\..\\..\\HM_App.API\\HM_App.API.csproj";
+            string exeProjectFilePath = System.IO.Directory.GetCurrentDirectory() + "..\\..\\..\\..\\HM_App\\HM_App.csproj";
+            string apiProjectFilePath = System.IO.Directory.GetCurrentDirectory() + "..\\..\\..\\..\\HM_App.API\\HM_App.API.csproj";
 
             exe_XmlDoc.Load(exeProjectFilePath);
             api_XmlDoc.Load(apiProjectFilePath);
