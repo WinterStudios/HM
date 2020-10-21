@@ -27,10 +27,12 @@
                         <MenuItem Header="Outhers"/>
                     </MenuItem>
                     <Separator/>
-                    <MenuItem Header="Preferences}">
+                    <MenuItem Header="Preferences">
                         <MenuItem Header="Theme"/>
                     </MenuItem>
-                    <MenuItem Header="Settings}" />
+                    <MenuItem Header="Settings">
+                        <MenuItem Header="LocalPath" Tag="AppLocalData" Click="MenuItem_Click"/>
+                    </MenuItem>
                     <Separator/>
                     <MenuItem Header="Exit" InputGestureText="Ctrl + F4" Tag="Exit"/>
                 </MenuItem>

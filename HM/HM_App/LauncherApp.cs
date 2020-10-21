@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Windows;
 using HM_App.API;
 using HM_App.API.GitHub;
 using HM_App.API.Properties;
@@ -16,21 +17,29 @@ namespace HM_App
 
         public static SemVersion AppVersion { get; private set; }
         public static SemVersion OnlineVersion { get; private set; }
-        private static string Token { get => "58221a498d9af2d31783e71eb563494968cd62bc"; }
+        private static string Token { get => "63fc270ed63c11dd6d077e4ebf4e23c1373cb943"; }
         public static bool Debug { get; protected set; }
-        public static Thread MainWindowThread { get; set; }
-
+        
+        public static LauncherWindow LauncherWindow { get; set; }
+        
         public static void Initialize()
         {
-            Settings.Load();
             GetLocalVersion();
+            LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_Version.Text = AppVersion.ToString()));
+            Thread.Sleep(500);
+            LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Loading Settings"));
+            Settings.Load();
+            Thread.Sleep(1000);
+            LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Settigns Load"));
+            Thread.Sleep(500);
             bool update = Environment.GetCommandLineArgs().Contains("-updated");
+            LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Check For Updates"));
             if (!update)
                 CheckForUpdate();
 
-            // Load Plugins or check for them
-            LoadWindow();
+            LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Loading..."));
 
+            App.Current.Dispatcher.Invoke(new Action(() => App.StartLoadMainWindow()));
         }
 
         private static void CheckForUpdate()
@@ -42,6 +51,7 @@ namespace HM_App
                 bool updateAvalable = SemVersion.Compare(AppVersion, OnlineVersion);
                 if (updateAvalable && Settings._Settings.ALLOW_AUTOMATIC_UPDATE)
                 {
+                    LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Download Update"));
                     GitHubClient.DownloadRelease(preRelease, Paths.LocalApplicagionDataDownloads, Token);
                     UpdateApp();
                     App.Current.Shutdown();
@@ -95,20 +105,6 @@ namespace HM_App
             
             return AppVersion;
         }
-
-        private static void LoadWindow()
-        {
-
-            MainWindowThread = new Thread(() =>
-            {
-                Window_HM mainWindow = new Window_HM();
-                mainWindow.Show();
-                System.Windows.Threading.Dispatcher.Run();
-            })
-            { IsBackground = true };
-            MainWindowThread.SetApartmentState(ApartmentState.STA);
-            MainWindowThread.Start();
-
-        }
+        
     }
 }

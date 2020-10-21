@@ -22,8 +22,8 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="1"  Orientation="Vertical" Margin="16,16,16,16" Grid.ColumnSpan="2">
-                <TextBlock x:Name="W_TextBlock_InfoProgress" Text="[TextBlock].[Text] 'Checking for Updates'" FontSize="10"/>
-                <TextBlock x:Name="W_TextBlock_Version" Grid.Column="1" Grid.Row="1" Text="v0.20.1012-beta.3" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="7pt" Foreground="#FFB4B4B4" Margin="0,4,0,0" />
+                <TextBlock x:Name="W_TextBlock_InfoProgress"  FontSize="10"/>
+                <TextBlock x:Name="W_TextBlock_Version" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="7pt" Foreground="#FFB4B4B4" Margin="0,4,0,0" />
             </StackPanel>
         </Grid>
         

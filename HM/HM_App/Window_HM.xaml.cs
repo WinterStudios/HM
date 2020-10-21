@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HM_App.API.Properties;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -23,7 +24,15 @@ namespace HM_App
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            string tag = ((MenuItem)sender).Tag.ToString();
+            switch (tag)
+            {
+                case "AppLocalData":
+                    string path = string.Format("{0}", Paths.LocalApplicationData.Replace("\\", "/"));
+                    path = path.Remove(path.LastIndexOf('/')).Replace("/", @"\");
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo() { UseShellExecute = true, FileName = "explorer.exe", Arguments = path });
+                    break;
+            }
         }
     }
 }
