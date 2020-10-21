@@ -39,7 +39,7 @@ jobs:
 
     - name: Disable Telemetry
       run: |
-          setx DOTNET_CLI_TELEMETRY_OPTOUT=1
+          setx DOTNET_CLI_TELEMETRY_OPTOUT 1
           dotnet run --project $env:Test_Project_Path -- -setVersion -preview
 
     - name: Get Preview Version
