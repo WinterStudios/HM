@@ -38,7 +38,7 @@ jobs:
       uses: microsoft/setup-msbuild@2008f912f56e61277eefaac6d1888b750582aa16
 
     - name: Disable Telemetry
-      run: set DOTNET_CLI_TELEMETRY_OPTOUT=1
+      run: dotnet run --project $env:Test_Project_Path -- -setVersion -preview
 
     - name: Get Preview Version
       shell: pwsh
