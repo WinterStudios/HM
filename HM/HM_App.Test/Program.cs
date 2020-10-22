@@ -10,7 +10,7 @@ namespace HM_App.Test
     {
         static void Main(string[] args)
         {
-            args = new string[] { "-setVersion", "-development" };
+            //args = new string[] { "-setVersion", "-development" };
             if (args.Length > 0)
                 switch (args[0])
                 {
