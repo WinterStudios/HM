@@ -105,6 +105,6 @@ namespace HM_App
             
             return AppVersion;
         }
-        
+
     }
 }

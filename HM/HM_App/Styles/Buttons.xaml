@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:HM_App.Styles">
+    
+    <Style x:Key="App.Close" TargetType="Button">
+        <Setter Property="Background" Value="#FF39C310"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border x:Name="Border" Height="30" Width="46" Background="{DynamicResource Windows.TitleBar.Button.Background}">
+                        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Viewbox Width="10" Height="10" Stretch="Uniform">
+                                <Path x:Name="Cross" Data="M 1 0 L 10 9 L 19 0 L 20 1 L 11 10 L 20 19 L 19 20 L 10 11 L 1 20 L 0 19 L 9 10 L 0 1 Z" Fill="{DynamicResource Windows.TitleBar.Button.Foreground}"/>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Windows.TitleBar.Button.Close.Background.Highlight}"/>
+                            <Setter Property="Fill" TargetName="Cross" Value="{DynamicResource Windows.TitleBar.Button.Foreground.Highlight}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>
