@@ -8,12 +8,21 @@
         Title="Window_HM" Height="450" Width="800" WindowStartupLocation="Manual" WindowStyle="None" ResizeMode="NoResize"
         SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor">
     
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Buttons.xaml" />
+                <ResourceDictionary Source="/Themes/Light.xaml"/>
+                <ResourceDictionary Source="/Styles/Menu.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Background="Red">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="48"/>
                 <ColumnDefinition Width="Auto"/>
@@ -64,5 +73,10 @@
                 <Button Click="Button_Click" Tag="Exit" Style="{DynamicResource App.Close}"/>
             </StackPanel>
         </Grid>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="Welcome" />
+        </TabControl>
+
     </Grid>
 </Window>

@@ -4,10 +4,25 @@
 
 
 
+    <!-- Top Menu Bar -->
+    <SolidColorBrush Color="#dddddd" x:Key="Windows.TitleBar.MenuItem.Background"/>
+    <SolidColorBrush Color="#c6c6c6" x:Key="Windows.TitleBar.MenuItem.Background.Highlight"/>
+    <SolidColorBrush Color="#dddddd" x:Key="Windows.TitleBar.MenuItem.Border"/>
+    <SolidColorBrush Color="#c6c6c6" x:Key="Windows.TitleBar.MenuItem.Border.Highlight"/>
+    <SolidColorBrush Color="#121212" x:Key="Windows.TitleBar.MenuItem.Foreground"/>
+    <SolidColorBrush Color="#ffffff" x:Key="Windows.TitleBar.MenuItem.Foreground.Highlight"/>
+    <SolidColorBrush Color="#cfcfcf" x:Key="Windows.TitleBar.MenuItem.Separator"/>
+    <SolidColorBrush Color="#ffffff" x:Key="Windows.TitleBar.SubMenuItem.Background"/>
+    <SolidColorBrush Color="#0074e8" x:Key="Windows.TitleBar.SubMenuItem.Background.Highlight"/>
+    <SolidColorBrush Color="#ffffff" x:Key="Windows.TitleBar.SubMenuItem.Border"/>
+    <SolidColorBrush Color="#ffffff" x:Key="Windows.TitleBar.SubMenuItem.Border.Highlight"/>
+    <SolidColorBrush Color="#121212" x:Key="Windows.TitleBar.SubMenuItem.Foreground"/>
+    <SolidColorBrush Color="#ffffff" x:Key="Windows.TitleBar.SubMenuItem.Foreground.Highlight"/>
 
     <!-- App Buttons -->
     <SolidColorBrush Color="#dddddd" x:Key="Windows.TitleBar.Button.Background"/>
     <SolidColorBrush Color="#e72536" x:Key="Windows.TitleBar.Button.Close.Background.Highlight"/>
+    <SolidColorBrush Color="#5F101F" x:Key="Windows.TitleBar.Button.Close.Background.Pressed"/>
     <SolidColorBrush Color="#ffffff" x:Key="Windows.TitleBar.Button.Background.Highlight"/>
     <SolidColorBrush Color="#333333" x:Key="Windows.TitleBar.Button.Foreground"/>
     <SolidColorBrush Color="#ffffff" x:Key="Windows.TitleBar.Button.Foreground.Highlight"/>

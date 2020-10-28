@@ -41,13 +41,13 @@ namespace HM_App
             ResourceDictionary Colores = new ResourceDictionary() { Source = new Uri("/HM_App;component/Themes/Light.xaml", UriKind.RelativeOrAbsolute) };
             App.Current.Resources.MergedDictionaries.Add(Colores);
 
-            ResourceDictionary ButtonStyles = new ResourceDictionary() { Source = new Uri("/HM_App;component/Styles/Buttons.xaml", UriKind.RelativeOrAbsolute) };
-            App.Current.Resources.MergedDictionaries.Add(ButtonStyles);
+            //ResourceDictionary ButtonStyles = new ResourceDictionary() { Source = new Uri("/HM_App;component/Styles/Buttons.xaml", UriKind.RelativeOrAbsolute) };
+            //App.Current.Resources.MergedDictionaries.Add(ButtonStyles);
         }
 
         public static void StartLoadMainWindow()
         {
-            LoadResources();
+            //LoadResources();
             Window_HM window = new Window_HM();
             
             window.Show();
