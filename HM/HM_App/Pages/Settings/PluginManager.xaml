@@ -18,6 +18,17 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Button Style="{DynamicResource Plugin.Add}"/>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Add" Style="{DynamicResource Plugins.Button.CLeft}"/>
+                <Button Content="Advance"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

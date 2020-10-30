@@ -46,7 +46,7 @@ namespace HM_App
         {
             if(Settings._Settings.ALLOW_PRE_RELEASE)
             {
-                Release preRelease = GitHubClient.GetRelease("WinterStudios", "HM", Token).FirstOrDefault(x => x.PreRelease == true && x.Branch == API.GitHub.Internal.Branch.preview);
+                Release preRelease = GitHubClient.GetRelease("WinterStudios", "HM", "").FirstOrDefault(x => x.PreRelease == true && x.Branch == API.GitHub.Internal.Branch.preview);
                 OnlineVersion = SemVersion.GetVersionFromGitHub(preRelease.TagName);
                 bool updateAvalable = SemVersion.Compare(AppVersion, OnlineVersion);
                 if (updateAvalable && Settings._Settings.ALLOW_AUTOMATIC_UPDATE)
