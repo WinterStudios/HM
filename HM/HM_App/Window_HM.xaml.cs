@@ -37,6 +37,12 @@ namespace HM_App
                 case "Exit":
                     Application.Current.Shutdown();
                     break;
+                case "PluginManager":
+                    Window window = new Window();
+                    Pages.Settings.PluginManager plugin = new Pages.Settings.PluginManager();
+                    window.Content = plugin;
+                    window.Show();
+                    break;
             }
         }
 

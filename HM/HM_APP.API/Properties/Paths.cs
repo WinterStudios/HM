@@ -20,6 +20,7 @@ namespace HM_App.API.Properties
                 return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\HM\\";
             }
         }
+
         /// <summary>
         /// Get Local Application Data for downloads
         /// </summary>
@@ -39,5 +40,15 @@ namespace HM_App.API.Properties
             } } 
 
         public static string SettingsPath { get => LocalApplicationData + "settings.xml"; }
+
+        /// <summary>
+        /// Get Plugin Path
+        /// </summary>
+        /// <remarks>C:\Users\[user]\AppData\Local\HM\Plugins\</remarks>
+        public static string PluginsPath { get {
+                if (!Directory.Exists(LocalApplicationData + "Plugins\\"))
+                    Directory.CreateDirectory(LocalApplicationData + "Plugins\\");
+                return LocalApplicationData + "Plugins\\";
+            } }
     }
 }

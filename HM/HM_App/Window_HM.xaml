@@ -40,6 +40,7 @@
                     <Separator/>
                     <MenuItem Header="Preferences">
                         <MenuItem Header="Theme"/>
+                        <MenuItem Header="Plugin Manager" Tag="PluginManager" Click="MenuItem_Click"/>
                     </MenuItem>
                     <MenuItem Header="Settings">
                         <MenuItem Header="LocalPath" Tag="AppLocalData" Click="MenuItem_Click"/>
