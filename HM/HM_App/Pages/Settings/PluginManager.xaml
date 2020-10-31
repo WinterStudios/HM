@@ -26,9 +26,25 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal">
-                <Button Content="Add" Style="{DynamicResource Plugins.Button.CLeft}"/>
-                <Button Content="Advance"/>
+                <Button Name="Btn" Content="Add" Style="{DynamicResource Plugins.Button.CLeft}"/>
+                <Button Content="Advance" Style="{DynamicResource Plugins.Button.CRight}"/>
             </StackPanel>
+            <Popup Grid.Row="0" Grid.RowSpan="2" Height="430" Width="244" ClipToBounds="True" IsOpen="True" VerticalAlignment="Top">
+                <Grid Height="43" Width="244" Background="Red">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Orientation="Vertical">
+                        <TextBlock Text="Username:"/>
+                        <TextBox />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Vertical">
+                        <TextBlock Text="Username:"/>
+                        <TextBox />
+                    </StackPanel>
+                </Grid>
+            </Popup>
         </Grid>
     </Grid>
 </UserControl>
