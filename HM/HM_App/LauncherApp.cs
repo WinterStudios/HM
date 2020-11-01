@@ -18,7 +18,7 @@ namespace HM_App
 
         public static SemVersion AppVersion { get; private set; }
         public static SemVersion OnlineVersion { get; private set; }
-        private static string Token { get => "63fc270ed63c11dd6d077e4ebf4e23c1373cb943"; }
+        private static string Token { get => "ec7fd300645b8d6573b496f4c2138fa8368fd319"; }
         public static bool Debug { get; protected set; }
         
         public static LauncherWindow LauncherWindow { get; set; }
@@ -47,7 +47,7 @@ namespace HM_App
         {
             if(Settings._Settings.ALLOW_PRE_RELEASE)
             {
-                Release preRelease = GitHubClient.GetRelease("WinterStudios", "HM", "").FirstOrDefault(x => x.PreRelease == true && x.Branch == API.GitHub.Internal.Branch.preview);
+                Release preRelease = GitHubClient.GetRelease("WinterStudios", "HM", Token).FirstOrDefault(x => x.PreRelease == true && x.Branch == API.GitHub.Internal.Branch.preview);
                 OnlineVersion = SemVersion.GetVersionFromGitHub(preRelease.TagName);
                 bool updateAvalable = SemVersion.Compare(AppVersion, OnlineVersion);
                 if (updateAvalable && Settings._Settings.ALLOW_AUTOMATIC_UPDATE)

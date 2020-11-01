@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HM_App"
         mc:Ignorable="d"
-        Title="Window_HM" Height="450" Width="800" WindowStartupLocation="Manual" WindowStyle="None" ResizeMode="NoResize"
+        Title="Window_HM" Height="720" Width="1280" WindowStartupLocation="Manual" WindowStyle="None" ResizeMode="NoResize"
         SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor">
     
     <Window.Resources>
@@ -17,67 +17,70 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Border Grid.Row="0" Grid.RowSpan="2" BorderThickness="1" BorderBrush="Aqua" >
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="48"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Menu Grid.Column="1" SnapsToDevicePixels="True" >
-                <MenuItem Header="File">
-                    <MenuItem Header="New">
-                        <MenuItem Header="Movie"/>
-                        <MenuItem Header="Tv Serie"/>
-                        <MenuItem Header="Music"/>
-                        <MenuItem Header="Outhers"/>
-                    </MenuItem>
-                    <Separator/>
-                    <MenuItem Header="Preferences">
-                        <MenuItem Header="Theme"/>
-                        <MenuItem Header="Plugin Manager" Tag="PluginManager" Click="MenuItem_Click"/>
-                    </MenuItem>
-                    <MenuItem Header="Settings">
-                        <MenuItem Header="LocalPath" Tag="AppLocalData" Click="MenuItem_Click"/>
-                    </MenuItem>
-                    <Separator/>
-                    <MenuItem Header="Exit" InputGestureText="Ctrl + F4" Tag="Exit"/>
-                </MenuItem>
-                <MenuItem Header="Movies">
-                    <MenuItem Header="Editor"/>
-                </MenuItem>
-                <MenuItem Header="Help">
-                    <MenuItem Header="Welcome" Tag="WelcomePage" Click="MenuItem_Click"/>
-                    <MenuItem Header="Documentation"/>
-                    <MenuItem Header="Release Notes"/>
-                    <Separator/>
-                    <MenuItem Header="WinterStudio GitHub"/>
-                    <MenuItem Header="GitHub Repository" Tag="Project_GitHub" Click="MenuItem_Click"/>
-                    <MenuItem Header="Request Feature"/>
-                    <MenuItem Header="Report Issue"/>
-                    <Separator />
-                    <MenuItem Header="View Licence"/>
-                    <MenuItem Header="Privacy Statement"/>
-                    <Separator />
-                    <MenuItem Header="Check for Updates"/>
-                    <Separator />
-                    <MenuItem Header="About"/>
-                </MenuItem>
-            </Menu>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <StackPanel Grid.Column="3" Orientation="Horizontal">
-                <Button Click="Button_Click" Tag="Exit" Style="{DynamicResource App.Close}"/>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Menu Grid.Column="1" SnapsToDevicePixels="True" >
+                    <MenuItem Header="File">
+                        <MenuItem Header="New">
+                            <MenuItem Header="Movie"/>
+                            <MenuItem Header="Tv Serie"/>
+                            <MenuItem Header="Music"/>
+                            <MenuItem Header="Outhers"/>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Header="Preferences">
+                            <MenuItem Header="Theme"/>
+                            <MenuItem Header="Plugin Manager" Tag="PluginManager" Click="MenuItem_Click"/>
+                        </MenuItem>
+                        <MenuItem Header="Settings">
+                            <MenuItem Header="LocalPath" Tag="AppLocalData" Click="MenuItem_Click"/>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Header="Exit" InputGestureText="Ctrl + F4" Tag="Exit"/>
+                    </MenuItem>
+                    <MenuItem Header="Movies">
+                        <MenuItem Header="Editor"/>
+                    </MenuItem>
+                    <MenuItem Header="Help">
+                        <MenuItem Header="Welcome" Tag="WelcomePage" Click="MenuItem_Click"/>
+                        <MenuItem Header="Documentation"/>
+                        <MenuItem Header="Release Notes"/>
+                        <Separator/>
+                        <MenuItem Header="WinterStudio GitHub"/>
+                        <MenuItem Header="GitHub Repository" Tag="Project_GitHub" Click="MenuItem_Click"/>
+                        <MenuItem Header="Request Feature"/>
+                        <MenuItem Header="Report Issue"/>
+                        <Separator />
+                        <MenuItem Header="View Licence"/>
+                        <MenuItem Header="Privacy Statement"/>
+                        <Separator />
+                        <MenuItem Header="Check for Updates"/>
+                        <Separator />
+                        <MenuItem Header="About"/>
+                    </MenuItem>
+                </Menu>
+
+                <StackPanel Grid.Column="3" Orientation="Horizontal">
+                    <Button Click="Button_Click" Tag="Exit" Style="{DynamicResource App.Close}"/>
+                </StackPanel>
+            </Grid>
+
+            <TabControl x:Name="W_TabControl" Grid.Row="1">
+                <TabItem Header="Welcome" />
+            </TabControl>
+
         </Grid>
-
-        <TabControl x:Name="W_TabControl" Grid.Row="1">
-            <TabItem Header="Welcome" />
-        </TabControl>
-
-    </Grid>
+    </Border>
 </Window>

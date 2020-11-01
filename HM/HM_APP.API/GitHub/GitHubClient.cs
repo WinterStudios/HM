@@ -8,12 +8,14 @@ using System.Text;
 using System.Text.Json;
 using System.Diagnostics;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 namespace HM_App.API.GitHub
 {
     public class GitHubClient
     {
         public static string GitHubUrl { get => "https://api.github.com/"; }
+        public static string TOKEN { get => "ec7fd300645b8d6573b496f4c2138fa8368fd319"; }
 
         public static Release GetReleaseLastet(string username, string repositoryName, string? token) => GetRelease(username, repositoryName, true, token).FirstOrDefault();
 
@@ -108,7 +110,7 @@ namespace HM_App.API.GitHub
         }
 
 
-        public static void GetRepositories(string user)
+        public static async Task<IEnumerable<Repository>> GetRepositories(string user)
         {
             string url = string.Format("{0}users/{1}/repos", GitHubUrl, user);
 
@@ -117,13 +119,54 @@ namespace HM_App.API.GitHub
             request.UserAgent = "HM_App";
             request.ServicePoint.Expect100Continue = false;
             request.Accept = "application/vnd.github.v3.raw";
+            request.Headers.Add(HttpRequestHeader.Authorization, string.Concat("token ", TOKEN));
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            HttpWebResponse response = new HttpWebResponse();
+            try
+            {
+                response = (HttpWebResponse)await request.GetResponseAsync();
+                
+            }
+            catch (WebException ex)
+            {
+                return new List<Repository>();
+            }
+
+
             StreamReader reader = new StreamReader(response.GetResponseStream());
-
             string json = reader.ReadToEnd();
 
-
+            List<Repository> repositories = JsonSerializer.Deserialize<Repository[]>(json).ToList();
+            
+            return repositories;
         }
+
+
+        [Obsolete]
+        public GitHubClient() => new GitHubClient("");
+        [Obsolete]
+        public GitHubClient(string user)
+        {
+            string url = string.Format("{0}users/{1}", GitHubUrl, user);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.UserAgent = "HM_App";
+            request.ServicePoint.Expect100Continue = false;
+            request.Accept = "application/vnd.github.v3.raw";
+
+            HttpWebResponse response = new HttpWebResponse();
+            try
+            {
+                response = (HttpWebResponse) request.GetResponse();
+
+            }
+            catch (WebException ex)
+            {
+                 
+            }
+           
+        }
+
     }
 }

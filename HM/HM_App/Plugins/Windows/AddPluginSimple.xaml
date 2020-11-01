@@ -68,7 +68,7 @@
                 </TextBlock>
                 <Border Grid.Row="2" BorderThickness="1" Margin="8,8,8,8" BorderBrush="#FFABADB3" >
                     <Grid>
-                        <TextBox x:Name="W_TextBox_UserSearch" Padding="4,0,0,0" Height="24" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="W_TextBox_UserSearch" Padding="4,0,0,0" Height="24" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" TextChanged="W_TextBox_UserSearch_TextChanged"/>
                         <TextBlock Grid.Row="2" Margin="6,0,6,0" Text="Search or enter a User" VerticalAlignment="Center" Foreground="#FF666666" IsHitTestVisible="False">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
@@ -84,10 +84,14 @@
                         <Button Style="{DynamicResource BTN.Arrow.Right}" VerticalAlignment="Center" HorizontalAlignment="Right" Width="16"  Margin="4" Foreground="#FF0098F0"/>
                     </Grid>
                 </Border>
-                
-                <ListView Grid.Row="3" Margin="8,0,8,8">
-                    
-                </ListView>
+
+                <ListBox x:Name="W_ListBox_Repositories" Grid.Row="3" Margin="8,0,8,8" MouseDoubleClick="W_ListBox_Repositories_MouseDoubleClick">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
                 <Button Grid.Row="4" Height="24" Content="Add" Margin="8,8,8,16"/>
             </Grid>
         </Border>

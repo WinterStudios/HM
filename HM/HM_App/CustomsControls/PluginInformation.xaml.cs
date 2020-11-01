@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HM_App.API.GitHub;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -25,15 +26,31 @@ namespace HM_App.CustomsControls
             get { return (string)GetValue(PluginNameProperty); }
             set { SetValue(PluginNameProperty, value); }
         }
+        public string PluginOwner
+        {
+            get { return (string)GetValue(PluginOwnerProperty); }
+            set { SetValue(PluginOwnerProperty, value); }
+        }
+
+        public Repository Repository { get; internal set; }
+
 
         // Using a DependencyProperty as the backing store for PluginName.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PluginNameProperty =
             DependencyProperty.Register("PluginName", typeof(string), typeof(PluginInformation));
 
+        public static readonly DependencyProperty PluginOwnerProperty =
+            DependencyProperty.Register("PluginOwner", typeof(string), typeof(PluginInformation));
+
 
         public PluginInformation()
         {
             InitializeComponent();
+        }
+        public void SetInformation()
+        {
+            PluginName = Repository.Name;
+            PluginOwner = Repository.Owner.Name;
         }
     }
 }

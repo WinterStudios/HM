@@ -6,21 +6,18 @@
              xmlns:local="clr-namespace:HM_App.CustomsControls"
              mc:Ignorable="d"  
              MinWidth="480" >
-    <Border>
+    <Border CornerRadius="8" Background="#10000000">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="46"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="42"/>
-                <RowDefinition Height="24"/>
+                <RowDefinition Height="48"/>
+                <RowDefinition Height="4"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=PluginName}" FontSize="18pt" />
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Autor: WinterStudios" FontWeight="Light"/>
-            <Ellipse Grid.Column="3" Grid.RowSpan="2" StrokeThickness="4" Stroke="#FF1797A4" Width="56" Height="56" SnapsToDevicePixels="False"/>
+            <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=PluginName}" FontSize="12pt" />
         </Grid>
     </Border>
 </UserControl>
