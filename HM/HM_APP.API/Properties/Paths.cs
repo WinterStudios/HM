@@ -42,6 +42,12 @@ namespace HM_App.API.Properties
         public static string SettingsPath { get => LocalApplicationData + "settings.xml"; }
 
         /// <summary>
+        /// Get Plugins Settings Path
+        /// </summary>
+        /// <remarks>C:\Users\[user]\AppData\Local\HM\plugins.json</remarks>
+        public static string LocalApplicationDataPlugin { get => LocalApplicationData + "plugins.json"; }
+
+        /// <summary>
         /// Get Plugin Path
         /// </summary>
         /// <remarks>C:\Users\[user]\AppData\Local\HM\Plugins\</remarks>

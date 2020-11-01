@@ -107,5 +107,23 @@ namespace HM_App.API.GitHub
             return null;
         }
 
+
+        public static void GetRepositories(string user)
+        {
+            string url = string.Format("{0}users/{1}/repos", GitHubUrl, user);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.UserAgent = "HM_App";
+            request.ServicePoint.Expect100Continue = false;
+            request.Accept = "application/vnd.github.v3.raw";
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            StreamReader reader = new StreamReader(response.GetResponseStream());
+
+            string json = reader.ReadToEnd();
+
+
+        }
     }
 }

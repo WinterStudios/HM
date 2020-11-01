@@ -9,6 +9,7 @@ using System.Windows;
 using HM_App.API;
 using HM_App.API.GitHub;
 using HM_App.API.Properties;
+using HM_App.Plugins;
 
 namespace HM_App
 {
@@ -38,7 +39,7 @@ namespace HM_App
                 CheckForUpdate();
 
             LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Loading..."));
-
+            App.Current.Dispatcher.Invoke(new Action(() => PluginSystem.Initialize()));
             App.Current.Dispatcher.Invoke(new Action(() => App.StartLoadMainWindow()));
         }
 

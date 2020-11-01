@@ -1,28 +1,30 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:HM_App.Styles">
-    
+
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Themes/Light.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style x:Key="App.Close" TargetType="Button">
-        <Setter Property="Height" Value="30"/>
+        <Setter Property="Height" Value="32"/>
         <Setter Property="Width" Value="48"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
         <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border x:Name="Border" Height="30" Width="46" Background="{DynamicResource Windows.TitleBar.Button.Background}">
-                        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Viewbox Width="10" Height="10" Stretch="Uniform">
-                                <Path x:Name="Cross" Data="M 1 0 L 10 9 L 19 0 L 20 1 L 11 10 L 20 19 L 19 20 L 10 11 L 1 20 L 0 19 L 9 10 L 0 1 Z" Fill="{DynamicResource Windows.TitleBar.Button.Foreground}"/>
-                            </Viewbox>
-                        </Grid>
-                    </Border>
-                    
+                    <Viewbox Stretch="Uniform">
+                        <Border x:Name="Border" BorderThickness="0" Height="32" Width="48" Background="{DynamicResource Windows.TitleBar.Button.Background}">
+                            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Viewbox Width="10" Height="10" Stretch="Uniform">
+                                    <Path x:Name="Cross" Data="M 1 0 L 10 9 L 19 0 L 20 1 L 11 10 L 20 19 L 19 20 L 10 11 L 1 20 L 0 19 L 9 10 L 0 1 Z" Fill="{DynamicResource Windows.TitleBar.Button.Foreground}"/>
+                                </Viewbox>
+                            </Grid>
+                        </Border>
+                    </Viewbox>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" TargetName="Border" Value="{DynamicResource Windows.TitleBar.Button.Close.Background.Highlight}"/>
@@ -34,7 +36,22 @@
         </Setter>
     </Style>
 
+    <Style x:Key="BTN.Arrow.Right" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border x:Name="border">
+                        <Grid>
+                            <Path RenderOptions.EdgeMode="Unspecified" SnapsToDevicePixels="False" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" Data="M265.171,125.577l-80-80c-4.881-4.881-12.797-4.881-17.678,0c-4.882,4.882-4.882,12.796,0,17.678l58.661,58.661H12.5   c-6.903,0-12.5,5.597-12.5,12.5c0,6.902,5.597,12.5,12.5,12.5h213.654l-58.659,58.661c-4.882,4.882-4.882,12.796,0,17.678   c2.44,2.439,5.64,3.661,8.839,3.661s6.398-1.222,8.839-3.661l79.998-80C270.053,138.373,270.053,130.459,265.171,125.577z" Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="Plugins.Button.CLeft" TargetType="Button">
+        <Setter Property="Height" Value="24"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="SnapsToDevicePixels" Value="False"/>
         <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
@@ -43,7 +60,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border" Padding="12,2,12,2" CornerRadius="4,0,0,4" Background="#FF089EB6" BorderBrush="#FF2E8A99" BorderThickness="1">
-                        <TextBlock Text="{TemplateBinding Content}" FontWeight="Normal"/>
+                        <TextBlock Text="{TemplateBinding Content}" FontWeight="Normal" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -74,5 +91,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
 </ResourceDictionary>

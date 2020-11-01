@@ -26,25 +26,30 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal">
-                <Button Name="Btn" Content="Add" Style="{DynamicResource Plugins.Button.CLeft}"/>
+                <Button x:Name="UC_Button_AddPlugin" Content="Add" Style="{DynamicResource Plugins.Button.CLeft}" Click="UC_Button_AddPlugin_Click" Tag="Btn_AddPlugin_Simple"/>
                 <Button Content="Advance" Style="{DynamicResource Plugins.Button.CRight}"/>
             </StackPanel>
-            <Popup Grid.Row="0" Grid.RowSpan="2" Height="430" Width="244" ClipToBounds="True" IsOpen="True" VerticalAlignment="Top">
-                <Grid Height="43" Width="244" Background="Red">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Orientation="Vertical">
-                        <TextBlock Text="Username:"/>
-                        <TextBox />
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Orientation="Vertical">
-                        <TextBlock Text="Username:"/>
-                        <TextBox />
-                    </StackPanel>
-                </Grid>
+            <Popup x:Name="UC_PopUp_AddPlugin" Width="340" Grid.Row="0" ClipToBounds="False" AllowsTransparency="True" VerticalOffset="2" Margin="0,38,0,0" StaysOpen="False">
+                <Border Padding="12" Background="AntiqueWhite" CornerRadius="4">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Orientation="Vertical">
+                            <TextBlock Text="Username:"/>
+                            <TextBox x:Name="UC_TextBox_AddPlugin_Username" Margin="12,6,24,0" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Orientation="Vertical">
+                            <TextBlock Text="Repository:"/>
+                            <TextBox x:Name="UC_TextBox_AddPlugin_Repository" Margin="12,6,24,0" />
+                            <Button Content="Add" Width="64" HorizontalAlignment="Right" Margin="0,18,24,0" Click="UC_Button_AddPlugin_Click" Tag="Btn_AddPlugin_Add"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
             </Popup>
         </Grid>
+        <StackPanel x:Name="UC_StackPanel_Plugins" Grid.Row="1" Orientation="Vertical" />
+
     </Grid>
 </UserControl>

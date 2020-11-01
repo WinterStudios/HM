@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -38,10 +39,12 @@ namespace HM_App
                     Application.Current.Shutdown();
                     break;
                 case "PluginManager":
-                    Window window = new Window();
                     Pages.Settings.PluginManager plugin = new Pages.Settings.PluginManager();
-                    window.Content = plugin;
-                    window.Show();
+                    TabItem tab = new TabItem();
+                    tab.Content = plugin;
+                    tab.Header = "Plugin Manager";
+                    W_TabControl.Items.Add(tab);
+                    W_TabControl.SelectedItem = tab;
                     break;
             }
         }
