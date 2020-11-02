@@ -18,28 +18,28 @@ namespace HM_App
 
         public static SemVersion AppVersion { get; private set; }
         public static SemVersion OnlineVersion { get; private set; }
-        private static string Token { get => "ec7fd300645b8d6573b496f4c2138fa8368fd319"; }
+        private static string Token { get => ""; }//"ec7fd300645b8d6573b496f4c2138fa8368fd319"; }
         public static bool Debug { get; protected set; }
         
         public static LauncherWindow LauncherWindow { get; set; }
         
         public static void Initialize()
         {
-            GetLocalVersion();
-            LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_Version.Text = AppVersion.ToString()));
-            Thread.Sleep(500);
-            LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Loading Settings"));
-            Settings.Load();
-            Thread.Sleep(1000);
-            LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Settigns Load"));
-            Thread.Sleep(500);
-            bool update = Environment.GetCommandLineArgs().Contains("-updated");
-            LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Check For Updates"));
-            if (!update)
-                CheckForUpdate();
-
-            LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Loading..."));
-            App.Current.Dispatcher.Invoke(new Action(() => PluginSystem.Initialize()));
+            // GetLocalVersion();
+            // LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_Version.Text = AppVersion.ToString()));
+            // Thread.Sleep(500);
+            // LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Loading Settings"));
+            // Settings.Load();
+            // Thread.Sleep(1000);
+            // LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Settigns Load"));
+            // Thread.Sleep(500);
+            // bool update = Environment.GetCommandLineArgs().Contains("-updated");
+            // LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Check For Updates"));
+            // if (!update)
+            //     CheckForUpdate();
+            // 
+            // LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Loading..."));
+            // App.Current.Dispatcher.Invoke(new Action(() => PluginSystem.Initialize()));
             App.Current.Dispatcher.Invoke(new Action(() => App.StartLoadMainWindow()));
         }
 

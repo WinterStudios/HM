@@ -1,5 +1,4 @@
-﻿using HM_App.CustomsControls;
-using HM_App.Plugins;
+﻿using HM_App.Plugins;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,14 +23,14 @@ namespace HM_App.Pages.Settings
         public PluginManager()
         {
             InitializeComponent();
-            //int plugins = 4;
-            //for (int i = 0; i < plugins; i++)
-            //{
-            //    PluginInformation information = new PluginInformation();
-            //    information.PluginName = "MeioMundo.Editor.Ferramentas";
-            //    UC_StackPanel_Plugins.Children.Add(information);
-            //
-            //}
+            int plugins = 4;
+            for (int i = 0; i < plugins; i++)
+            {
+                //PluginInformation information = new PluginInformation();
+                //information.PluginName = "MeioMundo.Editor.Ferramentas";
+                //UC_StackPanel_Plugins.Children.Add(information);
+
+            }
         }
 
         private void UC_Button_AddPlugin_Click(object sender, RoutedEventArgs e)
@@ -43,10 +42,10 @@ namespace HM_App.Pages.Settings
                 Plugins.Windows.AddPluginSimple window = new Plugins.Windows.AddPluginSimple();
                 if(window.ShowDialog() == true)
                 {
-                    PluginInformation plugin = new PluginInformation();
-                    plugin.Repository = window.Output;
-                    plugin.SetInformation();
-                    UC_StackPanel_Plugins.Children.Add(plugin);
+                    //PluginInformation plugin = new PluginInformation();
+                    //// plugin.Repository = window.Output;
+                    //// plugin.SetInformation();
+                    //UC_StackPanel_Plugins.Children.Add(plugin);
                 }
 
             }
@@ -55,5 +54,6 @@ namespace HM_App.Pages.Settings
                 PluginSystem.AddPlugin(UC_TextBox_AddPlugin_Username.Text, UC_TextBox_AddPlugin_Repository.Text);
 
         }
+
     }
 }
