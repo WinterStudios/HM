@@ -9,6 +9,7 @@ using System.Text.Json;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using HM_App.API.Properties;
 
 namespace HM_App.API.GitHub
 {
@@ -19,7 +20,7 @@ namespace HM_App.API.GitHub
         /// </summary>
         /// <remarks>https://api.github.com/</remarks>
         public static string GitHubUrl { get => "https://api.github.com/"; }
-        public static string TOKEN { get => "ec7fd300645b8d6573b496f4c2138fa8368fd319"; }
+        public static string TOKEN { get => Settings._Settings.GITHUB_TOKEN; }
 
         public static Release GetReleaseLastet(string username, string repositoryName, string? token) => GetRelease(username, repositoryName, true, token).FirstOrDefault();
 
@@ -174,11 +175,26 @@ namespace HM_App.API.GitHub
 
         public static Release[] GetReleases(Repository repository)
         {
-            string url = string.Format("{0}/repos/{1}/{2}", GitHubUrl, repository.Owner.Name, repository.Name);
+            string url = string.Format("{0}repos/{1}/{2}/releases", GitHubUrl, repository.Owner.Name, repository.Name);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.UserAgent = "HM_App";
+            request.ServicePoint.Expect100Continue = false;
+            request.Accept = "application/vnd.github.v3.raw";
+            request.Headers.Add(HttpRequestHeader.Authorization, string.Concat("token ", TOKEN));
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            StreamReader reader = new StreamReader(response.GetResponseStream());
+            string json = reader.ReadToEnd();
+
+            List<Release> releases = JsonSerializer.Deserialize<Release[]>(json).ToList();
+
+            return releases.ToArray();
         }
 
 
-
+        [Obsolete]
         private static object Get(string url, string token, Type type)
         {
             url = string.Format("{0}", GitHubUrl);

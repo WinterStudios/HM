@@ -32,7 +32,7 @@ namespace HM_App.Plugins
             Plugin plugin = new Plugin();
             plugin.Repository = repository;
             plugin.Name = repository.Name;
-            plugin.Releases = GitHubClient.GetRelease(repository);
+            plugin.Releases = GitHubClient.GetReleases(repository);
 
 
             if (Plugins == null)

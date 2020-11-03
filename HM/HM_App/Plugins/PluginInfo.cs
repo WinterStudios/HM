@@ -12,7 +12,7 @@ namespace HM_App.Plugins
         public string Location { get; set; }
         public string File { get; set; }
         public string Author { get; set; }
-        public SemVersion Version { get; set; }
+        public string Version { get; set; }
         public bool Enable { get; set; }
     }
 }

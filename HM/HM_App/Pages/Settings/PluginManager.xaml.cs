@@ -26,23 +26,31 @@ namespace HM_App.Pages.Settings
         {
             InitializeComponent();
             PluginUI = this;
-            int plugins = 4;
-            for (int i = 0; i < plugins; i++)
+            //int plugins = 4;
+            //for (int i = 0; i < plugins; i++)
+            //{
+            //    PluginInfo plugin = new PluginInfo { Name = "Plugin " + i };
+            //    UC_ListBox_Plugins.Items.Add(plugin);
+            //    //if (i < plugins)
+            //        //UC_ListBox_Plugins.SelectedItem = plugin;
+            //}
+
+            //UC_ListBox_Plugins.Loaded += (sender, e) =>
+            //{
+            //    UC_ListBox_Plugins.SelectedIndex = 3;
+            //    ListBoxItem lastItem = (ListBoxItem)UC_ListBox_Plugins.ItemContainerGenerator.ContainerFromIndex(UC_ListBox_Plugins.SelectedIndex);
+            //    lastItem.Focus();
+            //};
+
+            for (int i = 0; i < PluginSystem.Plugins.Count; i++)
             {
-                PluginInfo plugin = new PluginInfo { Name = "Plugin " + i };
+                PluginInfo plugin = new PluginInfo();
+                plugin.Name = PluginSystem.Plugins[i].Name;
+                plugin.Version = PluginSystem.Plugins[i].Releases[0].TagName;
+                plugin.Author = PluginSystem.Plugins[i].Repository.Owner.Name;
+
                 UC_ListBox_Plugins.Items.Add(plugin);
-                //if (i < plugins)
-                    //UC_ListBox_Plugins.SelectedItem = plugin;
             }
-
-            UC_ListBox_Plugins.Loaded += (sender, e) =>
-            {
-                UC_ListBox_Plugins.SelectedIndex = 3;
-                ListBoxItem lastItem = (ListBoxItem)UC_ListBox_Plugins.ItemContainerGenerator.ContainerFromIndex(UC_ListBox_Plugins.SelectedIndex);
-                lastItem.Focus();
-            };
-
-            
         }
 
         private void UC_Button_AddPlugin_Click(object sender, RoutedEventArgs e)
@@ -63,8 +71,8 @@ namespace HM_App.Pages.Settings
 
             }
 
-            if (tagName == "Btn_AddPlugin_Add")
-                PluginSystem.AddPlugin(UC_TextBox_AddPlugin_Username.Text, UC_TextBox_AddPlugin_Repository.Text);
+            //if (tagName == "Btn_AddPlugin_Add")
+            //    PluginSystem.AddPlugin(UC_TextBox_AddPlugin_Username.Text, UC_TextBox_AddPlugin_Repository.Text);
 
         }
 

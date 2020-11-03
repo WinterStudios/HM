@@ -29,7 +29,8 @@ namespace HM_App
             // LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_Version.Text = AppVersion.ToString()));
             // Thread.Sleep(500);
             // LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Loading Settings"));
-            // Settings.Load();
+            Settings.Load();
+            PluginSystem.Initialize();
             // Thread.Sleep(1000);
             // LauncherWindow.Dispatcher.Invoke(new Action(() => LauncherWindow.W_TextBlock_InfoProgress.Text = "Settigns Load"));
             // Thread.Sleep(500);

@@ -44,8 +44,8 @@
                                     <TextBlock Text="Description:"/>
                                     <TextBlock Text="Location:"/>
                                     <TextBlock Text="File:"/>
-                                    <TextBlock Text="Autor:"/>
-                                    <TextBlock Text="Version:"/>
+                                    <TextBlock Text="{Binding Author}"/>
+                                    <TextBlock Text="{Binding Version}"/>
                                     <TextBlock Text="Internet:"/>
                                 </StackPanel>
                             </Grid>
