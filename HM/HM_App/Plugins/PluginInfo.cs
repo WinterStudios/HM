@@ -12,7 +12,8 @@ namespace HM_App.Plugins
         public string Location { get; set; }
         public string File { get; set; }
         public string Author { get; set; }
-        public string Version { get; set; }
+        public int Version { get; set; }
+        public string[] Versions { get; set; }
         public bool Enable { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using HM_App.Plugins;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,7 +47,8 @@ namespace HM_App.Pages.Settings
             {
                 PluginInfo plugin = new PluginInfo();
                 plugin.Name = PluginSystem.Plugins[i].Name;
-                plugin.Version = PluginSystem.Plugins[i].Releases[0].TagName;
+                plugin.Versions = PluginSystem.Plugins[i].Releases.Select(x => x.TagName).ToArray();
+                plugin.Version = 0;
                 plugin.Author = PluginSystem.Plugins[i].Repository.Owner.Name;
 
                 UC_ListBox_Plugins.Items.Add(plugin);

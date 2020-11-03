@@ -45,7 +45,7 @@
                                     <TextBlock Text="Location:"/>
                                     <TextBlock Text="File:"/>
                                     <TextBlock Text="{Binding Author}"/>
-                                    <TextBlock Text="{Binding Version}"/>
+                                    <ComboBox ItemsSource="{Binding Versions}" SelectedIndex="{Binding Version}" />
                                     <TextBlock Text="Internet:"/>
                                 </StackPanel>
                             </Grid>

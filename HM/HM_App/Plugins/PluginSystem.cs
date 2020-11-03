@@ -1,4 +1,5 @@
-﻿using HM_App.API.GitHub;
+﻿using HM_App.API;
+using HM_App.API.GitHub;
 using HM_App.API.Plugins;
 using HM_App.API.Properties;
 using System;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 
@@ -27,18 +29,25 @@ namespace HM_App.Plugins
             Plugins = LoadPluginLibary();
         }
 
-        public static void AddPlugin(Repository repository) 
+        public static async Task AddPluginAsync(Repository repository) => await Task.Run(() => AddPlugin(repository));
+        public static void AddPlugin(Repository repository)
         {
             Plugin plugin = new Plugin();
             plugin.Repository = repository;
             plugin.Name = repository.Name;
             plugin.Releases = GitHubClient.GetReleases(repository);
-
+            plugin.CurrentVersion = SemVersion.GetVersionFromGitHub(plugin.Releases.First().TagName);
 
             if (Plugins == null)
                 Plugins = new List<Plugin>();
             Plugins.Add(plugin);
             SavePluginLibary();
+            DownloadPlugin();
+        }
+
+        private static void DownloadPlugin()
+        {
+            
         }
 
         private static List<Plugin> LoadPluginLibary()
