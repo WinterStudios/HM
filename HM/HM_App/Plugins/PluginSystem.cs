@@ -1,4 +1,5 @@
-﻿using HM_App.API.Plugins;
+﻿using HM_App.API.GitHub;
+using HM_App.API.Plugins;
 using HM_App.API.Properties;
 using System;
 using System.Collections.Generic;
@@ -26,11 +27,14 @@ namespace HM_App.Plugins
             Plugins = LoadPluginLibary();
         }
 
-        public static void AddPlugin(string username, string repository) 
+        public static void AddPlugin(Repository repository) 
         {
             Plugin plugin = new Plugin();
-            plugin.Username = username;
             plugin.Repository = repository;
+            plugin.Name = repository.Name;
+            plugin.Releases = GitHubClient.GetRelease(repository);
+
+
             if (Plugins == null)
                 Plugins = new List<Plugin>();
             Plugins.Add(plugin);

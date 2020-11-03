@@ -14,6 +14,10 @@ namespace HM_App.API.GitHub
 {
     public class GitHubClient
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>https://api.github.com/</remarks>
         public static string GitHubUrl { get => "https://api.github.com/"; }
         public static string TOKEN { get => "ec7fd300645b8d6573b496f4c2138fa8368fd319"; }
 
@@ -166,6 +170,27 @@ namespace HM_App.API.GitHub
                  
             }
            
+        }
+
+        public static Release[] GetReleases(Repository repository)
+        {
+            string url = string.Format("{0}/repos/{1}/{2}", GitHubUrl, repository.Owner.Name, repository.Name);
+        }
+
+
+
+        private static object Get(string url, string token, Type type)
+        {
+            url = string.Format("{0}", GitHubUrl);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.UserAgent = "HM_App";
+            request.ServicePoint.Expect100Continue = false;
+            request.Accept = "application/vnd.github.v3.raw";
+
+
+            return null;
         }
 
     }

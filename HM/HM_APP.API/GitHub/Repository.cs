@@ -13,9 +13,6 @@ namespace HM_App.API.GitHub
         public string Name { get; set; }
         [JsonPropertyName("owner")]
         public Owner Owner { get; set; }
-
-
-
-
+        public Release[] Releases { get; set; }
     }
 }

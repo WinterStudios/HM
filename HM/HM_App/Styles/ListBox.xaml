@@ -1,0 +1,84 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:HM_App.Styles">
+
+    <Style x:Key="PluginInformation" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Foreground" Value="Red"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Margin="6" CornerRadius="4" x:Name="border" Padding="16">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="0" Opacity="0.4" RenderingBias="Quality" Color="Black"/>
+                        </Border.Effect>
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="1,0">
+                                <GradientStop Color="#FF32DCE4"/>
+                                <GradientStop Color="#FF15CF94" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <StackPanel Orientation="Vertical">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding Name}" FontSize="14pt" />
+                            </Grid>
+                            <Grid x:Name="details" Background="#66BB1AC3" Height="0" Margin="0,0,16,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="5*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Description:"/>
+                                    <TextBlock Text="Location:"/>
+                                    <TextBlock Text="File:"/>
+                                    <TextBlock Text="Autor:"/>
+                                    <TextBlock Text="Version:"/>
+                                    <TextBlock Text="Internet:"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="Description:"/>
+                                    <TextBlock Text="Location:"/>
+                                    <TextBlock Text="File:"/>
+                                    <TextBlock Text="Autor:"/>
+                                    <TextBlock Text="Version:"/>
+                                    <TextBlock Text="Internet:"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="GotFocus">
+                            <BeginStoryboard>
+                                <Storyboard Storyboard.TargetName="details" Storyboard.TargetProperty="Height">
+                                    <DoubleAnimation Duration="0:0:0.5" To="120">
+                                        <DoubleAnimation.EasingFunction>
+                                            <QuadraticEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="LostFocus">
+                            <BeginStoryboard>
+                                <Storyboard Storyboard.TargetName="details" Storyboard.TargetProperty="Height">
+                                    <DoubleAnimation Duration="0:0:0.5" To="0">
+                                        <DoubleAnimation.EasingFunction>
+                                            <QuadraticEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+</ResourceDictionary>

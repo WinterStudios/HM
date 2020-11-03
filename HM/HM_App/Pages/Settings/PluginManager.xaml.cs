@@ -1,4 +1,5 @@
-﻿using HM_App.Plugins;
+﻿using HM_App.API.GitHub;
+using HM_App.Plugins;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,17 +21,28 @@ namespace HM_App.Pages.Settings
     /// </summary>
     public partial class PluginManager : UserControl
     {
+        private static PluginManager PluginUI;
         public PluginManager()
         {
             InitializeComponent();
+            PluginUI = this;
             int plugins = 4;
             for (int i = 0; i < plugins; i++)
             {
-                //PluginInformation information = new PluginInformation();
-                //information.PluginName = "MeioMundo.Editor.Ferramentas";
-                //UC_StackPanel_Plugins.Children.Add(information);
-
+                PluginInfo plugin = new PluginInfo { Name = "Plugin " + i };
+                UC_ListBox_Plugins.Items.Add(plugin);
+                //if (i < plugins)
+                    //UC_ListBox_Plugins.SelectedItem = plugin;
             }
+
+            UC_ListBox_Plugins.Loaded += (sender, e) =>
+            {
+                UC_ListBox_Plugins.SelectedIndex = 3;
+                ListBoxItem lastItem = (ListBoxItem)UC_ListBox_Plugins.ItemContainerGenerator.ContainerFromIndex(UC_ListBox_Plugins.SelectedIndex);
+                lastItem.Focus();
+            };
+
+            
         }
 
         private void UC_Button_AddPlugin_Click(object sender, RoutedEventArgs e)
@@ -42,6 +54,7 @@ namespace HM_App.Pages.Settings
                 Plugins.Windows.AddPluginSimple window = new Plugins.Windows.AddPluginSimple();
                 if(window.ShowDialog() == true)
                 {
+                    PluginSystem.AddPlugin(window.Output);
                     //PluginInformation plugin = new PluginInformation();
                     //// plugin.Repository = window.Output;
                     //// plugin.SetInformation();
@@ -54,6 +67,11 @@ namespace HM_App.Pages.Settings
                 PluginSystem.AddPlugin(UC_TextBox_AddPlugin_Username.Text, UC_TextBox_AddPlugin_Repository.Text);
 
         }
+
+        public static void AddPlugin(Repository plugininfo)
+        {
+            
+        }        
 
     }
 }
